@@ -1,0 +1,35 @@
+.paul-radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.paul-radio__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.paul-radio__input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #1ea7fd;
+}
+
+.paul-radio__label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.paul-radio__input:disabled ~ .paul-radio__label {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.paul-radio--error .paul-radio__input {
+  outline: 2px solid #ff4d4f;
+}

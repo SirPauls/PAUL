@@ -1,0 +1,60 @@
+.paul-switch {
+  display: inline-flex;
+  align-items: center;
+}
+
+.paul-switch__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.paul-switch__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.paul-switch__slider {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.paul-switch__slider::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.paul-switch__input:checked + .paul-switch__slider { background-color: #1ea7fd; }
+.paul-switch__input:checked + .paul-switch__slider::before { transform: translateX(20px); }
+
+.paul-switch__input:focus-visible + .paul-switch__slider {
+  box-shadow: 0 0 0 2px rgba(30, 167, 253, 0.3);
+}
+
+.paul-switch__label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.paul-switch--error .paul-switch__slider { box-shadow: 0 0 0 2px #f44336; }
+.paul-switch__input:disabled ~ .paul-switch__slider,
+.paul-switch__input:disabled ~ .paul-switch__label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

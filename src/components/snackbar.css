@@ -1,0 +1,55 @@
+.paul-snackbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background-color: #333;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transition: transform 0.3s ease-in-out;
+  min-width: 320px;
+  max-width: 90vw;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.paul-snackbar--open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.paul-snackbar--success { background-color: #4caf50; }
+.paul-snackbar--warning { background-color: #ff9800; }
+.paul-snackbar--error { background-color: #f44336; }
+.paul-snackbar--info { background-color: #2196f3; }
+
+.paul-snackbar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.paul-snackbar__message {
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.paul-snackbar__action {
+  color: white !important;
+  font-weight: 700;
+  padding: 4px 8px !important;
+}
+
+.paul-snackbar__close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  font-size: 1rem;
+}
+
+.paul-snackbar__close:hover { opacity: 1; }

@@ -1,11 +1,10 @@
-# PAUL
-### Pattern & Asset UI Library
+# PAUL (Pattern & Asset UI Library)
 
----
+> **Note:** This project is currently in **Pre-Alpha**. APIs are subject to change.
 
 ## The Vision: Defining the Digital Era
 
-We live in an age of the ephemeral—interfaces that flicker and fade, built for the moment rather than for the mission. **PAUL** is the antidote. 
+We live in an age of the ephemeral—interfaces that flicker and fade, built for the moment rather than for the mission. **PAUL (Pattern & Asset UI Library)** is the antidote. 
 
 We exist to define a new era of visual harmony. We are the architects of permanence, bridging the gap between visionary design and high-performance engineering. Our goal is to establish a foundation where industrial-grade precision meets the fluid elegance of human-centric design. This is more than a library; it’s the bedrock of digital craftsmanship.
 
