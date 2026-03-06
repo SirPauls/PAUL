@@ -1,0 +1,46 @@
+.paul-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 8px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.paul-chip--filled.paul-chip--default { background-color: #f1f1f1; color: #333; }
+.paul-chip--filled.paul-chip--primary { background-color: #1ea7fd; color: white; }
+.paul-chip--filled.paul-chip--success { background-color: #4caf50; color: white; }
+.paul-chip--filled.paul-chip--warning { background-color: #ff9800; color: white; }
+.paul-chip--filled.paul-chip--error { background-color: #f44336; color: white; }
+
+.paul-chip--outlined { background-color: transparent; border: 1px solid currentColor; }
+.paul-chip--outlined.paul-chip--default { color: #666; border-color: #ccc; }
+.paul-chip--outlined.paul-chip--primary { color: #1ea7fd; }
+.paul-chip--outlined.paul-chip--success { color: #4caf50; }
+.paul-chip--outlined.paul-chip--warning { color: #ff9800; }
+.paul-chip--outlined.paul-chip--error { color: #f44336; }
+
+.paul-chip--clickable { cursor: pointer; }
+.paul-chip--clickable:hover:not(.paul-chip--disabled) { opacity: 0.8; }
+
+.paul-chip--disabled { opacity: 0.5; cursor: not-allowed; }
+
+.paul-chip__delete {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: inherit;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+}
+
+.paul-chip__delete:hover { opacity: 1; }
+
+.paul-chip__icon { display: flex; align-items: center; font-size: 1rem; }

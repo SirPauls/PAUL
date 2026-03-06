@@ -1,0 +1,112 @@
+.paul-button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  gap: 8px;
+}
+
+.paul-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Variants */
+.paul-button--primary {
+  color: white;
+  background-color: #1ea7fd;
+}
+.paul-button--primary:hover:not(:disabled) {
+  background-color: #1a90db;
+}
+
+.paul-button--secondary {
+  color: #333;
+  background-color: #f1f1f1;
+}
+.paul-button--secondary:hover:not(:disabled) {
+  background-color: #e5e5e5;
+}
+
+.paul-button--outlined {
+  color: #1ea7fd;
+  background-color: transparent;
+  box-shadow: rgba(30, 167, 253, 0.5) 0px 0px 0px 1px inset;
+}
+.paul-button--outlined:hover:not(:disabled) {
+  background-color: rgba(30, 167, 253, 0.05);
+}
+
+.paul-button--ghost {
+  color: #1ea7fd;
+  background-color: transparent;
+}
+.paul-button--ghost:hover:not(:disabled) {
+  background-color: rgba(30, 167, 253, 0.05);
+}
+
+.paul-button--danger {
+  color: white;
+  background-color: #ff4d4f;
+}
+.paul-button--danger:hover:not(:disabled) {
+  background-color: #e64547;
+}
+
+/* Sizes */
+.paul-button--small {
+  font-size: 12px;
+  padding: 8px 16px;
+}
+.paul-button--medium {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+.paul-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+/* States */
+.paul-button--loading {
+  color: transparent !important;
+}
+
+.paul-button__loader {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: paul-spin 0.6s linear infinite;
+}
+
+.paul-button--secondary .paul-button__loader,
+.paul-button--outlined .paul-button__loader,
+.paul-button--ghost .paul-button__loader {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-top-color: #1ea7fd;
+}
+
+@keyframes paul-spin {
+  to { transform: rotate(360deg); }
+}
+
+.paul-button--error {
+  box-shadow: 0 0 0 2px #ff4d4f;
+}
+
+/* Accessibility */
+.paul-button:focus-visible {
+  outline: 2px solid #1ea7fd;
+  outline-offset: 2px;
+}

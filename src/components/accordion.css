@@ -1,0 +1,61 @@
+.paul-accordion {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.paul-accordion__item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.paul-accordion__item:last-child {
+  border-bottom: none;
+}
+
+.paul-accordion__header {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.paul-accordion__header:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+
+.paul-accordion__header:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.paul-accordion__title {
+  font-weight: 600;
+  color: #333;
+}
+
+.paul-accordion__icon {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.paul-accordion__panel {
+  padding: 0 16px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.paul-accordion__content {
+  padding: 16px 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Sizes */
+.paul-accordion--small .paul-accordion__header { padding: 8px 12px; font-size: 0.875rem; }
+.paul-accordion--large .paul-accordion__header { padding: 24px; font-size: 1.125rem; }

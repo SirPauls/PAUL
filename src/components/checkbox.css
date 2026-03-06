@@ -1,0 +1,35 @@
+.paul-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.paul-checkbox__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.paul-checkbox__input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #1ea7fd;
+}
+
+.paul-checkbox__label {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.paul-checkbox__input:disabled ~ .paul-checkbox__label {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.paul-checkbox--error .paul-checkbox__input {
+  outline: 2px solid #ff4d4f;
+}

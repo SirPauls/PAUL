@@ -1,0 +1,21 @@
+.paul-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.paul-tag--default { background-color: #eee; color: #666; }
+.paul-tag--primary { background-color: #e3f2fd; color: #1ea7fd; }
+.paul-tag--success { background-color: #e8f5e9; color: #4caf50; }
+.paul-tag--warning { background-color: #fff3e0; color: #ff9800; }
+.paul-tag--error { background-color: #ffebee; color: #f44336; }
+.paul-tag--info { background-color: #e1f5fe; color: #03a9f4; }
+
+.paul-tag--small { padding: 1px 6px; font-size: 0.625rem; }
+.paul-tag--medium { padding: 2px 8px; font-size: 0.75rem; }

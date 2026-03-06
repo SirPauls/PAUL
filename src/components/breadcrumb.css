@@ -1,0 +1,46 @@
+.paul-breadcrumb {
+  display: flex;
+  padding: 8px 0;
+}
+
+.paul-breadcrumb__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.paul-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+}
+
+.paul-breadcrumb__link {
+  color: #1ea7fd;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.paul-breadcrumb__link:hover {
+  color: #1a90db;
+  text-decoration: underline;
+}
+
+.paul-breadcrumb__text {
+  color: #666;
+}
+
+.paul-breadcrumb__text[aria-current="page"] {
+  font-weight: 700;
+  color: #333;
+}
+
+.paul-breadcrumb__separator {
+  margin: 0 8px;
+  color: #ccc;
+  user-select: none;
+}
