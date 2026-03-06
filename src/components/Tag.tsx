@@ -1,7 +1,7 @@
 import React from 'react';
 import './tag.css';
 
-export interface TagProps {
+export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The label to display in the tag */
   label: string;
   /** The color scheme of the tag */
@@ -22,6 +22,7 @@ export const Tag: React.FC<TagProps> = ({
   color = 'default',
   size = 'medium',
   className,
+  ...props
 }) => {
   const baseClass = 'paul-tag';
   const classes = [
@@ -32,7 +33,7 @@ export const Tag: React.FC<TagProps> = ({
   ].filter(Boolean).join(' ');
 
   return (
-    <span className={classes}>
+    <span className={classes} {...props}>
       {label}
     </span>
   );

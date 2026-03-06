@@ -8,7 +8,7 @@ export interface TabItem {
   disabled?: boolean;
 }
 
-export interface TabListProps {
+export interface TabListProps extends React.HTMLAttributes<HTMLDivElement> {
   /** The tabs to display */
   tabs: TabItem[];
   /** The initial active tab ID */
@@ -26,6 +26,7 @@ export const TabList: React.FC<TabListProps> = ({
   tabs,
   initialTabId,
   className,
+  ...props
 }) => {
   const [activeTabId, setActiveTabId] = useState(initialTabId || tabs[0]?.id);
 
@@ -35,7 +36,7 @@ export const TabList: React.FC<TabListProps> = ({
   const activeTab = tabs.find(tab => tab.id === activeTabId);
 
   return (
-    <div className={classes}>
+    <div className={classes} {...props}>
       <div className={`${baseClass}__header`} role="tablist">
         {tabs.map((tab) => (
           <button

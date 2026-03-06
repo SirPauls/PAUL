@@ -68,21 +68,24 @@ export const States: Story = {
  * Demonstrating different content variations.
  */
 export const ContentVariations: Story = {
-  args: {
-    tabs: [
-      { id: '1', label: 'Simple', content: 'Plain text content.' },
-      { id: '2', label: 'Rich', content: (
-        <div style={{ padding: '16px', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
-          <h3 style={{ marginTop: 0 }}>Rich Header</h3>
-          <p>This panel contains <strong>formatted</strong> HTML.</p>
-          <ul>
-            <li>Nested item 1</li>
-            <li>Nested item 2</li>
-          </ul>
-        </div>
-      ) },
-    ],
-  },
+  render: (args) => (
+    <TabList
+      {...args}
+      tabs={[
+        { id: '1', label: 'Simple', content: 'Plain text content.' },
+        { id: '2', label: 'Rich', content: (
+          <div style={{ padding: '16px', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+            <h3 style={{ marginTop: 0 }}>Rich Header</h3>
+            <p>This panel contains <strong>formatted</strong> HTML.</p>
+            <ul>
+              <li>Nested item 1</li>
+              <li>Nested item 2</li>
+            </ul>
+          </div>
+        ) },
+      ]}
+    />
+  ),
 };
 
 /**
