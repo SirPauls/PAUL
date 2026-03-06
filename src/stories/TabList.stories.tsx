@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TabList from '../components/TabList';
-import './tab-list.css';
+import '../components/tab-list.css';
 
 /**
  * PAUL Industrial Gold Standard TabList
@@ -8,7 +8,7 @@ import './tab-list.css';
  * A sleek, high-precision tab component for organizing related content.
  */
 const meta: Meta<typeof TabList> = {
-  title: 'Components/TabList',
+  title: 'Navigation/TabList',
   component: TabList,
   parameters: {
     layout: 'padded',

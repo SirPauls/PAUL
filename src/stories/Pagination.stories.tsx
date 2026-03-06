@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Pagination from '../components/Pagination';
-import './pagination.css';
+import '../components/pagination.css';
 
 /**
  * PAUL Industrial Gold Standard Pagination
@@ -9,7 +9,7 @@ import './pagination.css';
  * A clean, accessible pagination component for navigating large datasets.
  */
 const meta: Meta<typeof Pagination> = {
-  title: 'Components/Pagination',
+  title: 'Navigation/Pagination',
   component: Pagination,
   parameters: {
     layout: 'centered',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import List, { type ListItem } from '../components/List';
-import './list.css';
+import '../components/list.css';
 
 /**
  * PAUL Industrial Gold Standard List
@@ -9,7 +9,7 @@ import './list.css';
  * A clean, versatile list component for displaying collections of information.
  */
 const meta: Meta<typeof List> = {
-  title: 'Components/List',
+  title: 'Content Display/List',
   component: List,
   parameters: {
     layout: 'padded',

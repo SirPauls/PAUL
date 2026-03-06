@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import IconButton from '../components/IconButton';
-import './icon-button.css';
+import '../components/icon-button.css';
 
 /**
  * PAUL Industrial Gold Standard IconButton
@@ -9,7 +9,7 @@ import './icon-button.css';
  * A compact, focused icon-only button for streamlined user actions.
  */
 const meta: Meta<typeof IconButton> = {
-  title: 'Components/IconButton',
+  title: 'Actions/IconButton',
   component: IconButton,
   parameters: {
     layout: 'centered',

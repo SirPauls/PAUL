@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Table from '../components/Table';
-import './table.css';
+import '../components/table.css';
 
 /**
  * PAUL Industrial Gold Standard Table
@@ -8,7 +8,7 @@ import './table.css';
  * A clean, high-performance table component for structured data presentation.
  */
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table',
+  title: 'Content Display/Table',
   component: Table,
   parameters: {
     layout: 'padded',

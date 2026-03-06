@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LinearProgress from '../components/LinearProgress';
-import './linear-progress.css';
+import '../components/linear-progress.css';
 
 /**
  * PAUL Industrial Gold Standard LinearProgress
@@ -8,7 +8,7 @@ import './linear-progress.css';
  * A sleek, precise linear progress indicator for tracking task progression.
  */
 const meta: Meta<typeof LinearProgress> = {
-  title: 'Components/LinearProgress',
+  title: 'Indicators & Status/LinearProgress',
   component: LinearProgress,
   parameters: {
     layout: 'padded',

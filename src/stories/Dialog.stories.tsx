@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Dialog from '../components/Dialog';
-import './dialog.css';
+import '../components/dialog.css';
 
 /**
  * PAUL Industrial Gold Standard Dialog
@@ -9,7 +9,7 @@ import './dialog.css';
  * A focused, high-clarity dialog component for critical user decisions.
  */
 const meta: Meta<typeof Dialog> = {
-  title: 'Components/Dialog',
+  title: 'Containers & Layout/Dialog',
   component: Dialog,
   parameters: {
     layout: 'fullscreen',

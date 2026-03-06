@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Breadcrumb from '../components/Breadcrumb';
-import './breadcrumb.css';
+import '../components/breadcrumb.css';
 
 /**
  * PAUL Industrial Gold Standard Breadcrumb
@@ -8,7 +8,7 @@ import './breadcrumb.css';
  * A clean, accessible breadcrumb component for intuitive navigation hierarchy.
  */
 const meta: Meta<typeof Breadcrumb> = {
-  title: 'Components/Breadcrumb',
+  title: 'Navigation/Breadcrumb',
   component: Breadcrumb,
   parameters: {
     layout: 'padded',

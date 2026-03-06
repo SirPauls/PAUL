@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Accordion from '../components/Accordion';
-import './accordion.css';
+import '../components/accordion.css';
 
 /**
  * PAUL Industrial Gold Standard Accordion
@@ -8,7 +8,7 @@ import './accordion.css';
  * A clean, accessible accordion for managing collapsible content sections.
  */
 const meta: Meta<typeof Accordion> = {
-  title: 'Components/Accordion',
+  title: 'Content Display/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Authenticator from '../components/Authenticator';
-import './authenticator.css';
+import '../components/authenticator.css';
 
 /**
  * PAUL Industrial Gold Standard Authenticator
@@ -9,7 +9,7 @@ import './authenticator.css';
  * A sleek, high-performance authentication interface for secure user entry.
  */
 const meta: Meta<typeof Authenticator> = {
-  title: 'Components/Authenticator',
+  title: 'Forms & Selection Controls/Authenticator',
   component: Authenticator,
   parameters: {
     layout: 'centered',

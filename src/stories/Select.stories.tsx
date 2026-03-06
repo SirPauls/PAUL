@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Select from '../components/Select';
-import './select.css';
+import '../components/select.css';
 
 /**
  * PAUL Industrial Gold Standard Select
@@ -9,7 +9,7 @@ import './select.css';
  * A robust, accessible native select component for reliable user choices.
  */
 const meta: Meta<typeof Select> = {
-  title: 'Components/Select',
+  title: 'Forms & Selection Controls/Select',
   component: Select,
   parameters: {
     layout: 'centered',

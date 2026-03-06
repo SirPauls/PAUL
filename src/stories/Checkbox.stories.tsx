@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Checkbox from '../components/Checkbox';
-import './checkbox.css';
+import '../components/checkbox.css';
 
 /**
  * PAUL Industrial Gold Standard Checkbox
@@ -8,7 +8,7 @@ import './checkbox.css';
  * A clean, accessible checkbox component for reliable user selection.
  */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
+  title: 'Forms & Selection Controls/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',

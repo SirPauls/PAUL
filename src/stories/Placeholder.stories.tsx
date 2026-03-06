@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Placeholder from '../components/Placeholder';
-import './placeholder.css';
+import '../components/placeholder.css';
 
 /**
  * PAUL Industrial Gold Standard Placeholder
@@ -8,7 +8,7 @@ import './placeholder.css';
  * A sleek, versatile placeholder component for smooth skeleton loading experiences.
  */
 const meta: Meta<typeof Placeholder> = {
-  title: 'Components/Placeholder',
+  title: 'Indicators & Status/Placeholder',
   component: Placeholder,
   parameters: {
     layout: 'centered',

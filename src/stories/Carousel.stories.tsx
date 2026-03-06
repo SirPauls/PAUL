@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Carousel from '../components/Carousel';
-import './carousel.css';
+import '../components/carousel.css';
 
 /**
  * PAUL Industrial Gold Standard Carousel
@@ -8,7 +8,7 @@ import './carousel.css';
  * A high-performance, smooth-transitioning carousel for immersive visual storytelling.
  */
 const meta: Meta<typeof Carousel> = {
-  title: 'Components/Carousel',
+  title: 'Content Display/Carousel',
   component: Carousel,
   parameters: {
     layout: 'padded',

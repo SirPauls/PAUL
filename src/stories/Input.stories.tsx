@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Input from '../components/Input';
-import './input.css';
+import '../components/input.css';
 
 /**
  * PAUL Industrial Gold Standard Input
@@ -9,7 +9,7 @@ import './input.css';
  * A sleek, high-performance input field for precise data entry.
  */
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Forms & Selection Controls/Input',
   component: Input,
   parameters: {
     layout: 'centered',

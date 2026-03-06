@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Drawer from '../components/Drawer';
-import './drawer.css';
+import '../components/drawer.css';
 
 /**
  * PAUL Industrial Gold Standard Drawer
@@ -9,7 +9,7 @@ import './drawer.css';
  * A sleek, high-utility side drawer for additional context and navigation.
  */
 const meta: Meta<typeof Drawer> = {
-  title: 'Components/Drawer',
+  title: 'Containers & Layout/Drawer',
   component: Drawer,
   parameters: {
     layout: 'fullscreen',

@@ -9,7 +9,7 @@ import '../components/textarea.css';
  * A sleek, high-performance textarea for multi-line text entry.
  */
 const meta: Meta<typeof Textarea> = {
-  title: 'Components/Textarea',
+  title: 'Forms & Selection Controls/Textarea',
   component: Textarea,
   parameters: {
     layout: 'centered',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Snackbar from '../components/Snackbar';
-import './snackbar.css';
+import '../components/snackbar.css';
 
 /**
  * PAUL Industrial Gold Standard Snackbar
@@ -9,7 +9,7 @@ import './snackbar.css';
  * A sleek, non-intrusive notification component for brief messages.
  */
 const meta: Meta<typeof Snackbar> = {
-  title: 'Components/Snackbar',
+  title: 'Messaging & Feedback/Snackbar',
   component: Snackbar,
   parameters: {
     layout: 'centered',

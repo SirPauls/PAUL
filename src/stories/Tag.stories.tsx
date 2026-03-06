@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Tag from '../components/Tag';
-import './tag.css';
+import '../components/tag.css';
 
 /**
  * PAUL Industrial Gold Standard Tag
@@ -8,7 +8,7 @@ import './tag.css';
  * A compact, non-interactive tag component for categorization and metadata.
  */
 const meta: Meta<typeof Tag> = {
-  title: 'Components/Tag',
+  title: 'Indicators & Status/Tag',
   component: Tag,
   parameters: {
     layout: 'centered',

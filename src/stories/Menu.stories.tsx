@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Menu, { type MenuItem } from '../components/Menu';
 import Button from '../components/Button';
-import './menu.css';
+import '../components/menu.css';
 
 /**
  * PAUL Industrial Gold Standard Menu
@@ -10,7 +10,7 @@ import './menu.css';
  * A sleek, high-clarity menu component for focused user actions.
  */
 const meta: Meta<typeof Menu> = {
-  title: 'Components/Menu',
+  title: 'Navigation/Menu',
   component: Menu,
   parameters: {
     layout: 'centered',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Alert from '../components/Alert';
-import './alert.css';
+import '../components/alert.css';
 
 /**
  * PAUL Industrial Gold Standard Alert
@@ -9,7 +9,7 @@ import './alert.css';
  * A reliable, informative alert component for communicating important feedback.
  */
 const meta: Meta<typeof Alert> = {
-  title: 'Components/Alert',
+  title: 'Messaging & Feedback/Alert',
   component: Alert,
   parameters: {
     layout: 'padded',

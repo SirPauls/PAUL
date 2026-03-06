@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Radio from '../components/Radio';
-import './radio.css';
+import '../components/radio.css';
 
 /**
  * PAUL Industrial Gold Standard Radio
@@ -8,7 +8,7 @@ import './radio.css';
  * A clean, accessible radio component for focused user choice.
  */
 const meta: Meta<typeof Radio> = {
-  title: 'Components/Radio',
+  title: 'Forms & Selection Controls/Radio',
   component: Radio,
   parameters: {
     layout: 'centered',

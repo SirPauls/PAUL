@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CircularProgress from '../components/CircularProgress';
-import './circular-progress.css';
+import '../components/circular-progress.css';
 
 /**
  * PAUL Industrial Gold Standard CircularProgress
@@ -8,7 +8,7 @@ import './circular-progress.css';
  * A precise, visually engaging circular progress indicator for tracking task completion.
  */
 const meta: Meta<typeof CircularProgress> = {
-  title: 'Components/CircularProgress',
+  title: 'Indicators & Status/CircularProgress',
   component: CircularProgress,
   parameters: {
     layout: 'centered',

@@ -8,7 +8,7 @@ import Button from '../components/Button';
  * The fundamental interaction element, engineered for precision and reliability.
  */
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Actions/Button',
   component: Button,
   parameters: {
     layout: 'centered',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Switch from '../components/Switch';
-import './switch.css';
+import '../components/switch.css';
 
 /**
  * PAUL Industrial Gold Standard Switch
@@ -8,7 +8,7 @@ import './switch.css';
  * A high-precision, interactive toggle for instantaneous state changes.
  */
 const meta: Meta<typeof Switch> = {
-  title: 'Components/Switch',
+  title: 'Forms & Selection Controls/Switch',
   component: Switch,
   parameters: {
     layout: 'centered',

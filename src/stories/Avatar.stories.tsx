@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from '../components/Avatar';
-import './avatar.css';
+import '../components/avatar.css';
 
 /**
  * PAUL Industrial Gold Standard Avatar
@@ -8,7 +8,7 @@ import './avatar.css';
  * A clean, expressive avatar component for user identification.
  */
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Avatar',
+  title: 'Content Display/Avatar',
   component: Avatar,
   parameters: {
     layout: 'centered',

@@ -9,7 +9,7 @@ import '../components/tooltip.css';
  * A sleek, informative tooltip for providing contextual help.
  */
 const meta: Meta<typeof Tooltip> = {
-  title: 'Components/Tooltip',
+  title: 'Messaging & Feedback/Tooltip',
   component: Tooltip,
   parameters: {
     layout: 'centered',

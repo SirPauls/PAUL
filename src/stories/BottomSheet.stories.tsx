@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import BottomSheet from '../components/BottomSheet';
-import './bottom-sheet.css';
+import '../components/bottom-sheet.css';
 
 /**
  * PAUL Industrial Gold Standard BottomSheet
@@ -9,7 +9,7 @@ import './bottom-sheet.css';
  * A sleek, modern bottom sheet component for mobile-first user interactions.
  */
 const meta: Meta<typeof BottomSheet> = {
-  title: 'Components/BottomSheet',
+  title: 'Containers & Layout/BottomSheet',
   component: BottomSheet,
   parameters: {
     layout: 'fullscreen',

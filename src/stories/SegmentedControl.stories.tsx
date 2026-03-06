@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import SegmentedControl from '../components/SegmentedControl';
-import './segmented-control.css';
+import '../components/segmented-control.css';
 
 /**
  * PAUL Industrial Gold Standard SegmentedControl
@@ -9,7 +9,7 @@ import './segmented-control.css';
  * A sleek, high-precision toggle for selecting between mutually exclusive options.
  */
 const meta: Meta<typeof SegmentedControl> = {
-  title: 'Components/SegmentedControl',
+  title: 'Forms & Selection Controls/SegmentedControl',
   component: SegmentedControl,
   parameters: {
     layout: 'centered',

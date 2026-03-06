@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Dropdown from '../components/Dropdown';
-import './dropdown.css';
+import '../components/dropdown.css';
 
 /**
  * PAUL Industrial Gold Standard Dropdown
@@ -9,7 +9,7 @@ import './dropdown.css';
  * A sleek, accessible dropdown component for robust user selection.
  */
 const meta: Meta<typeof Dropdown> = {
-  title: 'Components/Dropdown',
+  title: 'Containers & Layout/Dropdown',
   component: Dropdown,
   parameters: {
     layout: 'centered',

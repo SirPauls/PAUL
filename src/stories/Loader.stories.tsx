@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Loader from '../components/Loader';
-import './loader.css';
+import '../components/loader.css';
 
 /**
  * PAUL Industrial Gold Standard Loader
@@ -8,7 +8,7 @@ import './loader.css';
  * A sleek, high-performance loading indicator for smooth user transitions.
  */
 const meta: Meta<typeof Loader> = {
-  title: 'Components/Loader',
+  title: 'Indicators & Status/Loader',
   component: Loader,
   parameters: {
     layout: 'centered',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Badge from '../components/Badge';
-import './badge.css';
+import '../components/badge.css';
 
 /**
  * PAUL Industrial Gold Standard Badge
@@ -8,7 +8,7 @@ import './badge.css';
  * A sleek, versatile badge component for displaying status or metadata.
  */
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: 'Indicators & Status/Badge',
   component: Badge,
   parameters: {
     layout: 'centered',

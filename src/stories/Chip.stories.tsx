@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Chip from '../components/Chip';
-import './chip.css';
+import '../components/chip.css';
 
 /**
  * PAUL Industrial Gold Standard Chip
@@ -9,7 +9,7 @@ import './chip.css';
  * A sleek, interactive chip component for tags, filters, and small bits of information.
  */
 const meta: Meta<typeof Chip> = {
-  title: 'Components/Chip',
+  title: 'Forms & Selection Controls/Chip',
   component: Chip,
   parameters: {
     layout: 'centered',
