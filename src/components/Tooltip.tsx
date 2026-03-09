@@ -7,7 +7,7 @@ export interface TooltipProps {
   /** The content to display inside the tooltip */
   content: React.ReactNode;
   /** The element that triggers the tooltip */
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
   /** The position of the tooltip relative to the trigger */
   position?: TooltipPosition;
   /** Delay in milliseconds before showing the tooltip */
@@ -46,6 +46,26 @@ export const Tooltip: React.FC<TooltipProps> = ({
     setIsVisible(false);
   };
 
+  const onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    showTooltip();
+    children.props.onMouseEnter?.(e);
+  };
+
+  const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    hideTooltip();
+    children.props.onMouseLeave?.(e);
+  };
+
+  const onFocus = (e: React.FocusEvent<HTMLElement>) => {
+    showTooltip();
+    children.props.onFocus?.(e);
+  };
+
+  const onBlur = (e: React.FocusEvent<HTMLElement>) => {
+    hideTooltip();
+    children.props.onBlur?.(e);
+  };
+
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -62,26 +82,15 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   // Clone the child to pass event handlers and aria attributes
   // ensuring we don't break the layout with a wrapper div
-  const trigger = cloneElement(children as React.ReactElement<any>, {
-    onMouseEnter: (e: React.MouseEvent) => {
-      showTooltip();
-      (children as React.ReactElement<any>).props.onMouseEnter?.(e);
-    },
-    onMouseLeave: (e: React.MouseEvent) => {
-      hideTooltip();
-      (children as React.ReactElement<any>).props.onMouseLeave?.(e);
-    },
-    onFocus: (e: React.FocusEvent) => {
-      showTooltip();
-      (children as React.ReactElement<any>).props.onFocus?.(e);
-    },
-    onBlur: (e: React.FocusEvent) => {
-      hideTooltip();
-      (children as React.ReactElement<any>).props.onBlur?.(e);
-    },
+  // eslint-disable-next-line react-hooks/refs
+  const trigger = cloneElement(children, {
+    onMouseEnter,
+    onMouseLeave,
+    onFocus,
+    onBlur,
     'aria-describedby': isVisible ? tooltipId : undefined,
-    className: `${(children as React.ReactElement<any>).props.className || ''} ${classes}`.trim(),
-  } as React.HTMLAttributes<HTMLElement>);
+    className: `${children.props.className || ''} ${classes}`.trim(),
+  });
 
   return (
     <>
