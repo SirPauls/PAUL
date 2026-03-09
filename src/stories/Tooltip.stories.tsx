@@ -1,110 +1,48 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Tooltip from '../components/Tooltip';
-import Button from '../components/Button'; // Assuming Button exists based on file list
-import '../components/tooltip.css';
 
-/**
- * PAUL Industrial Gold Standard Tooltip
- * 
- * A sleek, informative tooltip for providing contextual help.
- */
-const meta: Meta<typeof Tooltip> = {
-  title: 'Messaging & Feedback/Tooltip',
+import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
+import Tooltip, { TooltipProps } from '../components/Tooltip';
+import Button from '../components/Button';
+
+export default {
+  title: 'Components/Tooltip',
   component: Tooltip,
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: 'A tooltip component that displays additional information on hover or focus.',
-      },
-    },
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    position: {
-      control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
-    },
-    delay: { control: 'number' },
-    content: { control: 'text' },
-  },
-  args: { 
-    content: 'This is a tooltip',
-    position: 'top',
-    delay: 200,
-  },
-};
+} as Meta;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-/**
- * Default story showing the component in its basic state.
- */
-export const Default: Story = {
-  render: (args) => (
-    <Tooltip {...args} content={args.content || 'Default Tooltip'}>
-      <Button label="Hover me" />
+const Template: StoryFn<TooltipProps> = (args) => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+    <Tooltip {...args}>
+      <Button>Hover me</Button>
     </Tooltip>
-  ),
+  </div>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  content: 'This is a tooltip',
+  position: 'top',
 };
 
-/**
- * Demonstrating positioning variations.
- */
-export const Positions: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', padding: '50px' }}>
-      <Tooltip content="Tooltip on Top" position="top">
-        <Button label="Top" />
-      </Tooltip>
-      <Tooltip content="Tooltip on Bottom" position="bottom">
-        <Button label="Bottom" />
-      </Tooltip>
-      <Tooltip content="Tooltip on Left" position="left">
-        <Button label="Left" />
-      </Tooltip>
-      <Tooltip content="Tooltip on Right" position="right">
-        <Button label="Right" />
-      </Tooltip>
-    </div>
-  ),
+export const Top = Template.bind({});
+Top.args = {
+  content: 'Top tooltip',
+  position: 'top',
 };
 
-/**
- * Demonstrating different delays.
- */
-export const Delays: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-      <Tooltip content="Instant tooltip" delay={0}>
-        <Button label="Instant (0ms)" />
-      </Tooltip>
-      <Tooltip content="Standard tooltip" delay={200}>
-        <Button label="Standard (200ms)" />
-      </Tooltip>
-      <Tooltip content="Slow tooltip" delay={1000}>
-        <Button label="Slow (1000ms)" />
-      </Tooltip>
-    </div>
-  ),
+export const Bottom = Template.bind({});
+Bottom.args = {
+  content: 'Bottom tooltip',
+  position: 'bottom',
 };
 
-/**
- * Demonstrating complex content.
- */
-export const RichContent: Story = {
-  render: (args) => (
-    <Tooltip 
-      {...args} 
-      content={
-        <div style={{ textAlign: 'center' }}>
-          <strong>Bold Text</strong><br/>
-          <span>Multiple lines supported</span>
-        </div>
-      }
-    >
-      <Button label="Rich Content" />
-    </Tooltip>
-  ),
+export const Left = Template.bind({});
+Left.args = {
+  content: 'Left tooltip',
+  position: 'left',
+};
+
+export const Right = Template.bind({});
+Right.args = {
+  content: 'Right tooltip',
+  position: 'right',
 };

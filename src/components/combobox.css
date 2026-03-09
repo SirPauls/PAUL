@@ -1,0 +1,68 @@
+.paul-combobox {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+}
+
+.paul-combobox__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 40px 0 16px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.paul-combobox__input:focus {
+  outline: none;
+  border-color: #111827;
+}
+
+.paul-combobox__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+}
+
+.paul-combobox__list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.paul-combobox__item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.paul-combobox__item:hover {
+  background-color: #F3F4F6;
+}
+
+.paul-combobox__item.active {
+  background-color: #111827;
+  color: #FFFFFF;
+}

@@ -1,0 +1,37 @@
+.paul-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.paul-card--default {
+  border: 1px solid #E0E0E0;
+}
+
+.paul-card--elevated {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.paul-card--outlined {
+  border: 2px solid #111827;
+}
+
+.paul-card__header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #E0E0E0;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.paul-card__body {
+  padding: 24px;
+  flex: 1;
+}
+
+.paul-card__footer {
+  padding: 16px 24px;
+  border-top: 1px solid #E0E0E0;
+  background-color: #F9FAFB;
+}

@@ -2,41 +2,37 @@ import React from 'react';
 import './button.css';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Is this the principal call to action on the page? */
+  /** The visual style of the button */
   variant?: 'primary' | 'secondary' | 'outlined' | 'ghost' | 'danger';
   /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
-  /** Optional background color */
-  backgroundColor?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /** Button contents */
-  label: string;
+  label?: string;
   /** Is the button in a loading state? */
   isLoading?: boolean;
-  /** Does the button have an error? */
-  hasError?: boolean;
   /** Left icon element */
   leftIcon?: React.ReactNode;
   /** Right icon element */
   rightIcon?: React.ReactNode;
+  /** Icon only button */
+  iconOnly?: React.ReactNode;
 }
 
 /** 
  * PAUL Industrial Gold Standard Button
  * 
- * The fundamental interaction element, engineered for precision and reliability.
+ * A sleek, high-performance button engineered for precision and reliability.
  */
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
-  size = 'medium',
-  backgroundColor,
+  size = 'md',
   label,
   isLoading = false,
-  hasError = false,
   leftIcon,
   rightIcon,
+  iconOnly,
   disabled,
   className,
-  style,
   ...props
 }) => {
   const baseClass = 'paul-button';
@@ -45,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
     `${baseClass}--${variant}`,
     `${baseClass}--${size}`,
     isLoading && `${baseClass}--loading`,
-    hasError && `${baseClass}--error`,
+    iconOnly && `${baseClass}--icon-only`,
     className
   ].filter(Boolean).join(' ');
 
@@ -53,17 +49,18 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       type="button"
       className={classes}
-      style={{ backgroundColor, ...style }}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       {...props}
     >
       {isLoading ? (
         <span className={`${baseClass}__loader`} aria-hidden="true" />
+      ) : iconOnly ? (
+        <span className={`${baseClass}__icon-center`}>{iconOnly}</span>
       ) : (
         <>
           {leftIcon && <span className={`${baseClass}__icon-left`}>{leftIcon}</span>}
-          <span className={`${baseClass}__label`}>{label}</span>
+          {label && <span className={`${baseClass}__label`}>{label}</span>}
           {rightIcon && <span className={`${baseClass}__icon-right`}>{rightIcon}</span>}
         </>
       )}

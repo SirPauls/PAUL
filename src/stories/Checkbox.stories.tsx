@@ -2,102 +2,55 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Checkbox from '../components/Checkbox';
 import '../components/checkbox.css';
 
-/**
- * PAUL Industrial Gold Standard Checkbox
- * 
- * A clean, accessible checkbox component for reliable user selection.
- */
 const meta: Meta<typeof Checkbox> = {
-  title: 'Forms & Selection Controls/Checkbox',
+  title: 'Forms/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'A robust checkbox component with support for labels, error states, and accessibility.',
-      },
-    },
   },
   tags: ['autodocs'],
   argTypes: {
-    checked: { control: 'boolean' },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
     disabled: { control: 'boolean' },
-    hasError: { control: 'boolean' },
-    label: { control: 'text' },
+    checked: { control: 'boolean' },
   },
-  args: { 
+  args: {
     label: 'Checkbox Label',
-    checked: false,
-    disabled: false,
-    hasError: false,
+    size: 'md',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Default story showing the component in its basic state.
- */
 export const Default: Story = {};
 
-/**
- * Demonstrating visual variations.
- */
-export const Variants: Story = {
+export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Checkbox {...args} label="Unchecked" checked={false} />
-      <Checkbox {...args} label="Checked" checked={true} />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Checkbox {...args} size="sm" label="Small" />
+      <Checkbox {...args} size="md" label="Medium" />
+      <Checkbox {...args} size="lg" label="Large" />
     </div>
   ),
 };
 
-/**
- * Demonstrating interactive states.
- */
 export const States: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Checkbox {...args} label="Disabled Unchecked" disabled checked={false} />
-      <Checkbox {...args} label="Disabled Checked" disabled checked={true} />
-      <Checkbox {...args} label="Error State" hasError />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Checkbox {...args} label="Unchecked" />
+      <Checkbox {...args} label="Checked" checked />
+      <Checkbox {...args} label="Disabled" disabled />
+      <Checkbox {...args} label="Checked & Disabled" checked disabled />
     </div>
   ),
 };
 
-/**
- * Demonstrating content variations.
- */
-export const ContentVariations: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Checkbox {...args} label="Short Label" />
-      <div style={{ width: '200px' }}>
-        <Checkbox {...args} label="Very long checkbox label that might wrap or overflow in its container" />
-      </div>
-    </div>
-  ),
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
+export const NoLabel: Story = {
   args: {
-    label: 'Accessible Checkbox',
-    'aria-label': 'Subscribe to our newsletter',
+    label: undefined,
   },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Checkbox {...args} label="" />
-      <Checkbox {...args} label=" " />
-    </div>
-  ),
 };

@@ -7,27 +7,27 @@ export interface AvatarProps {
   /** The name of the user for the alt text and initials */
   name: string;
   /** The size of the avatar */
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /** The shape of the avatar */
   shape?: 'circle' | 'square';
+  /** Status indicator */
+  status?: 'online' | 'offline' | 'away' | 'busy';
   /** Custom class name */
   className?: string;
-  /** Whether the avatar is in a loading state */
-  isLoading?: boolean;
 }
 
 /**
  * PAUL Industrial Gold Standard Avatar
  * 
- * A clean, expressive avatar component for user identification.
+ * A sleek, high-performance avatar component for user identification.
  */
 export const Avatar: React.FC<AvatarProps> = ({
   src,
   name,
-  size = 'medium',
+  size = 'md',
   shape = 'circle',
+  status,
   className,
-  isLoading = false,
 }) => {
   const getInitials = (name: string) => {
     return name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
@@ -38,18 +38,18 @@ export const Avatar: React.FC<AvatarProps> = ({
     baseClass,
     `${baseClass}--${size}`,
     `${baseClass}--${shape}`,
-    isLoading && `${baseClass}--loading`,
     className
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} title={name}>
-      {isLoading ? (
-        <div className={`${baseClass}__loader`} aria-hidden="true" />
-      ) : src ? (
+      {src ? (
         <img className={`${baseClass}__image`} src={src} alt={name} />
       ) : (
         <span className={`${baseClass}__initials`}>{getInitials(name)}</span>
+      )}
+      {status && (
+        <span className={`${baseClass}__status ${baseClass}__status--${status}`} aria-hidden="true" />
       )}
     </div>
   );

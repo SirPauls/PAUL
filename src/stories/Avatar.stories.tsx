@@ -5,7 +5,7 @@ import '../components/avatar.css';
 /**
  * PAUL Industrial Gold Standard Avatar
  * 
- * A clean, expressive avatar component for user identification.
+ * A sleek, high-performance avatar component for user identification.
  */
 const meta: Meta<typeof Avatar> = {
   title: 'Content Display/Avatar',
@@ -22,7 +22,7 @@ const meta: Meta<typeof Avatar> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large', 'xlarge'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
       description: 'The size of the avatar',
     },
     shape: {
@@ -30,14 +30,17 @@ const meta: Meta<typeof Avatar> = {
       options: ['circle', 'square'],
       description: 'The shape of the avatar',
     },
-    isLoading: { control: 'boolean' },
+    status: {
+      control: 'select',
+      options: ['online', 'offline', 'away', 'busy'],
+      description: 'The status of the user',
+    },
     src: { control: 'text' },
   },
   args: { 
     name: 'Sir Paul',
-    size: 'medium',
+    size: 'md',
     shape: 'circle',
-    isLoading: false,
   },
 };
 
@@ -50,27 +53,43 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 /**
- * Demonstrating visual variations.
+ * Demonstrating all sizes from Figma.
  */
-export const Variants: Story = {
+export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-      <Avatar {...args} name="Initial Avatar" />
-      <Avatar {...args} src="https://avatars.githubusercontent.com/u/108528654?v=4" name="Image Avatar" />
+    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+      <Avatar {...args} name="XS" size="xs" />
+      <Avatar {...args} name="SM" size="sm" />
+      <Avatar {...args} name="MD" size="md" />
+      <Avatar {...args} name="LG" size="lg" />
+      <Avatar {...args} name="XL" size="xl" />
+      <Avatar {...args} name="2XL" size="2xl" />
     </div>
   ),
 };
 
 /**
- * Demonstrating different sizes.
+ * Demonstrating image avatars.
  */
-export const Sizes: Story = {
+export const ImageAvatars: Story = {
   render: (args) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-      <Avatar {...args} name="Small" size="small" />
-      <Avatar {...args} name="Medium" size="medium" />
-      <Avatar {...args} name="Large" size="large" />
-      <Avatar {...args} name="XLarge" size="xlarge" />
+      <Avatar {...args} src="https://avatars.githubusercontent.com/u/108528654?v=4" name="User 1" size="lg" />
+      <Avatar {...args} src="https://avatars.githubusercontent.com/u/1?v=4" name="User 2" size="lg" />
+    </div>
+  ),
+};
+
+/**
+ * Demonstrating status indicators.
+ */
+export const Status: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+      <Avatar {...args} name="Online" status="online" size="lg" />
+      <Avatar {...args} name="Away" status="away" size="lg" />
+      <Avatar {...args} name="Busy" status="busy" size="lg" />
+      <Avatar {...args} name="Offline" status="offline" size="lg" />
     </div>
   ),
 };
@@ -81,54 +100,8 @@ export const Sizes: Story = {
 export const Shapes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-      <Avatar {...args} name="Circle" shape="circle" />
-      <Avatar {...args} name="Square" shape="square" />
-    </div>
-  ),
-};
-
-/**
- * Demonstrating interactive states.
- */
-export const States: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-      <Avatar {...args} name="Loading" isLoading />
-      <Avatar {...args} name="Loaded" />
-    </div>
-  ),
-};
-
-/**
- * Demonstrating content variations.
- */
-export const ContentVariations: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-      <Avatar {...args} name="A" />
-      <Avatar {...args} name="Longer Name Example" />
-    </div>
-  ),
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
-  args: {
-    name: 'Accessible Avatar',
-    'aria-label': 'User profile image for Accessible Avatar',
-  },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <Avatar {...args} name="" />
-      <Avatar {...args} name=" " />
+      <Avatar {...args} name="Circle" shape="circle" size="lg" />
+      <Avatar {...args} name="Square" shape="square" size="lg" />
     </div>
   ),
 };

@@ -1,34 +1,61 @@
 .paul-avatar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #f1f1f1;
-  color: #333;
-  overflow: hidden;
   position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  overflow: visible;
+  flex-shrink: 0;
 }
 
-.paul-avatar--circle { border-radius: 50%; }
-.paul-avatar--square { border-radius: 4px; }
+.paul-avatar--circle { border-radius: 9999px; }
+.paul-avatar--square { border-radius: 8px; }
 
-.paul-avatar__image { width: 100%; height: 100%; object-fit: cover; }
-.paul-avatar__initials { font-weight: 700; font-family: 'Nunito Sans', sans-serif; }
+.paul-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.paul-avatar__initials {
+  font-weight: 700;
+  color: #525252;
+}
+
+/* Status indicator */
+.paul-avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  background-color: #9CA3AF;
+}
+
+.paul-avatar__status--online { background-color: #10B981; }
+.paul-alert__status--offline { background-color: #9CA3AF; }
+.paul-avatar__status--away { background-color: #F59E0B; }
+.paul-avatar__status--busy { background-color: #EF4444; }
 
 /* Sizes */
-.paul-avatar--small { width: 32px; height: 32px; font-size: 0.75rem; }
-.paul-avatar--medium { width: 48px; height: 48px; font-size: 1rem; }
-.paul-avatar--large { width: 64px; height: 64px; font-size: 1.25rem; }
-.paul-avatar--xlarge { width: 96px; height: 96px; font-size: 1.75rem; }
+.paul-avatar--xs { width: 24px; height: 24px; }
+.paul-avatar--xs .paul-avatar__initials { font-size: 0.625rem; }
 
-/* States */
-.paul-avatar--loading { background-color: #e5e5e5; }
-.paul-avatar__loader {
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, #e5e5e5 25%, #f1f1f1 50%, #e5e5e5 75%);
-  background-size: 200% 100%;
-  animation: paul-shimmer 1.5s infinite linear;
-}
+.paul-avatar--sm { width: 32px; height: 32px; }
+.paul-avatar--sm .paul-avatar__initials { font-size: 0.75rem; }
 
-@keyframes paul-shimmer {
-  to { background-position: -200% 0; }
-}
+.paul-avatar--md { width: 40px; height: 40px; }
+.paul-avatar--md .paul-avatar__initials { font-size: 0.875rem; }
+
+.paul-avatar--lg { width: 48px; height: 48px; }
+.paul-avatar--lg .paul-avatar__initials { font-size: 1rem; }
+
+.paul-avatar--xl { width: 56px; height: 56px; }
+.paul-avatar--xl .paul-avatar__initials { font-size: 1.125rem; }
+
+.paul-avatar--2xl { width: 64px; height: 64px; }
+.paul-avatar--2xl .paul-avatar__initials { font-size: 1.25rem; }

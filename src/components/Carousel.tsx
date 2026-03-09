@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Children, isValidElement, cloneElement } from 'react';
 import './carousel.css';
 
-export interface CarouselItem {
-  id: string;
-  image: string;
-  title?: string;
-  description?: string;
-}
-
 export interface CarouselProps {
-  /** The items to display in the carousel */
-  items: CarouselItem[];
-  /** Whether to auto-play the carousel */
-  autoPlay?: boolean;
-  /** The interval for auto-play in milliseconds */
-  interval?: number;
-  /** Whether to show navigation dots */
-  showDots?: boolean;
+  /** The content of the carousel (slides) */
+  children: React.ReactNode;
   /** Whether to show navigation arrows */
   showArrows?: boolean;
+  /** Whether to show pagination dots */
+  showDots?: boolean;
+  /** Whether to autoplay the carousel */
+  autoplay?: boolean;
+  /** Autoplay interval in milliseconds */
+  autoplayInterval?: number;
   /** Custom class name */
   className?: string;
 }
@@ -26,91 +19,67 @@ export interface CarouselProps {
 /**
  * PAUL Industrial Gold Standard Carousel
  * 
- * A high-performance, smooth-transitioning carousel for immersive visual storytelling.
+ * A high-performance, touch-friendly carousel for showcasing a series of content.
  */
 export const Carousel: React.FC<CarouselProps> = ({
-  items,
-  autoPlay = false,
-  interval = 5000,
-  showDots = true,
+  children,
   showArrows = true,
+  showDots = true,
+  autoplay = false,
+  autoplayInterval = 3000,
   className,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const slides = Children.toArray(children).filter(isValidElement);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+  const goTo = (index: number) => {
+    setCurrentIndex((index + slides.length) % slides.length);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
-  };
+  const prev = () => goTo(currentIndex - 1);
+  const next = () => goTo(currentIndex + 1);
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  React.useEffect(() => {
-    if (!autoPlay) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-    }, interval);
-    return () => clearInterval(timer);
-  }, [autoPlay, interval, items.length]);
+  useState(() => {
+    if (!autoplay) return;
+    const interval = setInterval(next, autoplayInterval);
+    return () => clearInterval(interval);
+  });
 
   const baseClass = 'paul-carousel';
   const classes = [baseClass, className].filter(Boolean).join(' ');
 
   return (
-    <div className={classes} role="region" aria-label="Image Carousel">
-      <div 
-        className={`${baseClass}__track`}
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {items.map((item) => (
-          <div key={item.id} className={`${baseClass}__slide`}>
-            <img className={`${baseClass}__image`} src={item.image} alt={item.title || ''} />
-            {(item.title || item.description) && (
-              <div className={`${baseClass}__caption`}>
-                {item.title && <h3 className={`${baseClass}__slide-title`}>{item.title}</h3>}
-                {item.description && <p className={`${baseClass}__slide-desc`}>{item.description}</p>}
-              </div>
-            )}
-          </div>
-        ))}
+    <div className={classes}>
+      <div className={`${baseClass}__viewport`}>
+        <div 
+          className={`${baseClass}__slider`}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div key={index} className={`${baseClass}__slide`}>
+              {cloneElement(slide, { ...slide.props, 'aria-hidden': index !== currentIndex })}
+            </div>
+          ))}
+        </div>
       </div>
-
       {showArrows && (
         <>
-          <button 
-            className={`${baseClass}__arrow ${baseClass}__arrow--left`} 
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            ‹
+          <button className={`${baseClass}__arrow ${baseClass}__arrow--left`} onClick={prev} aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
-          <button 
-            className={`${baseClass}__arrow ${baseClass}__arrow--right`} 
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            ›
+          <button className={`${baseClass}__arrow ${baseClass}__arrow--right`} onClick={next} aria-label="Next slide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </>
       )}
-
       {showDots && (
         <div className={`${baseClass}__dots`}>
-          {items.map((_, index) => (
-            <button
-              key={index}
-              className={[
-                `${baseClass}__dot`,
-                index === currentIndex && `${baseClass}__dot--active`
-              ].filter(Boolean).join(' ')}
-              onClick={() => goToSlide(index)}
+          {slides.map((_, index) => (
+            <button 
+              key={index} 
+              className={`${baseClass}__dot ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => goTo(index)}
               aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === currentIndex}
             />
           ))}
         </div>

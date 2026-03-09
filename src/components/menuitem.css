@@ -1,0 +1,44 @@
+.paul-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+  gap: 12px;
+}
+
+.paul-menu-item:hover:not(:disabled) {
+  background-color: #F3F4F6;
+}
+
+.paul-menu-item:disabled {
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.paul-menu-item__leading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+}
+
+.paul-menu-item__leading-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.paul-menu-item__label {
+  flex: 1;
+  color: #111827;
+}
+
+.paul-menu-item__trailing-text {
+  color: #9CA3AF;
+  font-size: 0.75rem;
+}

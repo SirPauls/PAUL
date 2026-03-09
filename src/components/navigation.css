@@ -1,0 +1,36 @@
+.paul-navigation__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.paul-navigation--horizontal .paul-navigation__list {
+  flex-direction: row;
+  gap: 24px;
+}
+
+.paul-navigation--vertical .paul-navigation__list {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paul-navigation__link {
+  display: block;
+  padding: 8px 12px;
+  color: #4B5563;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.paul-navigation__link:hover {
+  background-color: #F3F4F6;
+  color: #111827;
+}
+
+.paul-navigation__link.active {
+  background-color: #111827;
+  color: #FFFFFF;
+}

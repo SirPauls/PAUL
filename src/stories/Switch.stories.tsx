@@ -2,102 +2,49 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Switch from '../components/Switch';
 import '../components/switch.css';
 
-/**
- * PAUL Industrial Gold Standard Switch
- * 
- * A high-precision, interactive toggle for instantaneous state changes.
- */
 const meta: Meta<typeof Switch> = {
-  title: 'Forms & Selection Controls/Switch',
+  title: 'Forms/Switch',
   component: Switch,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'A versatile switch component with support for labels, error states, and accessibility.',
-      },
-    },
   },
   tags: ['autodocs'],
   argTypes: {
-    checked: { control: 'boolean' },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
     disabled: { control: 'boolean' },
-    hasError: { control: 'boolean' },
-    label: { control: 'text' },
+    checked: { control: 'boolean' },
   },
-  args: { 
-    label: 'Enable notifications',
-    checked: false,
-    disabled: false,
-    hasError: false,
+  args: {
+    label: 'Switch Label',
+    size: 'md',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Default story showing the component in its basic state.
- */
 export const Default: Story = {};
 
-/**
- * Demonstrating visual variations.
- */
-export const Variants: Story = {
+export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Switch {...args} label="Off State" checked={false} />
-      <Switch {...args} label="On State" checked={true} />
+      <Switch {...args} size="sm" label="Small" />
+      <Switch {...args} size="md" label="Medium" />
+      <Switch {...args} size="lg" label="Large" />
     </div>
   ),
 };
 
-/**
- * Demonstrating interactive states.
- */
 export const States: Story = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Switch {...args} label="Disabled Off" disabled checked={false} />
-      <Switch {...args} label="Disabled On" disabled checked={true} />
-      <Switch {...args} label="Error State" hasError />
-    </div>
-  ),
-};
-
-/**
- * Demonstrating content variations.
- */
-export const ContentVariations: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Switch {...args} label="Short" />
-      <div style={{ width: '200px' }}>
-        <Switch {...args} label="Very long switch label that might wrap in its container" />
-      </div>
-    </div>
-  ),
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
-  args: {
-    label: 'Accessible Switch',
-    'aria-label': 'Toggle dark mode',
-  },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Switch {...args} label="" />
-      <Switch {...args} label=" " />
+      <Switch {...args} label="Off" />
+      <Switch {...args} label="On" defaultChecked />
+      <Switch {...args} label="Disabled" disabled />
+      <Switch {...args} label="On & Disabled" defaultChecked disabled />
     </div>
   ),
 };

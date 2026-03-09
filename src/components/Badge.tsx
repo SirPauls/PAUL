@@ -3,13 +3,15 @@ import './badge.css';
 
 export interface BadgeProps {
   /** The content of the badge */
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  /** Optional leading element */
+  leadingElement?: React.ReactNode;
+  /** Optional trailing element */
+  trailingElement?: React.ReactNode;
   /** The visual style of the badge */
   variant?: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
   /** The size of the badge */
-  size?: 'small' | 'medium' | 'large';
-  /** The shape of the badge */
-  shape?: 'rounded' | 'pill' | 'square';
+  size?: 'sm' | 'md';
   /** Custom class name */
   className?: string;
 }
@@ -21,9 +23,10 @@ export interface BadgeProps {
  */
 export const Badge: React.FC<BadgeProps> = ({
   children,
+  leadingElement,
+  trailingElement,
   variant = 'default',
-  size = 'medium',
-  shape = 'pill',
+  size = 'md',
   className,
 }) => {
   const baseClass = 'paul-badge';
@@ -31,13 +34,14 @@ export const Badge: React.FC<BadgeProps> = ({
     baseClass,
     `${baseClass}--${variant}`,
     `${baseClass}--${size}`,
-    `${baseClass}--${shape}`,
     className
   ].filter(Boolean).join(' ');
 
   return (
     <span className={classes}>
-      {children}
+      {leadingElement && <span className={`${baseClass}__leading`}>{leadingElement}</span>}
+      {children && <span className={`${baseClass}__text`}>{children}</span>}
+      {trailingElement && <span className={`${baseClass}__trailing`}>{trailingElement}</span>}
     </span>
   );
 };

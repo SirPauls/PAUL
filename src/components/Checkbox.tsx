@@ -1,11 +1,11 @@
-import React, { useId } from 'react';
+import React from 'react';
 import './checkbox.css';
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /** The label for the checkbox */
-  label?: string;
-  /** Whether the checkbox is in an error state */
-  hasError?: boolean;
+  label?: React.ReactNode;
+  /** The size of the checkbox */
+  size?: 'sm' | 'md' | 'lg';
   /** Custom class name */
   className?: string;
 }
@@ -13,38 +13,27 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
 /**
  * PAUL Industrial Gold Standard Checkbox
  * 
- * A clean, accessible checkbox component for reliable user selection.
+ * A high-performance, accessible checkbox for capturing user input.
  */
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
-  hasError = false,
+  size = 'md',
   className,
-  id,
   ...props
 }) => {
   const baseClass = 'paul-checkbox';
-  const generatedId = useId();
-  const checkboxId = id || generatedId;
   const classes = [
     baseClass,
-    hasError && `${baseClass}--error`,
+    `${baseClass}--${size}`,
     className
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classes}>
-      <div className={`${baseClass}__wrapper`}>
-        <input
-          type="checkbox"
-          id={checkboxId}
-          className={`${baseClass}__input`}
-          {...props}
-        />
-        <label htmlFor={checkboxId} className={`${baseClass}__label`}>
-          {label}
-        </label>
-      </div>
-    </div>
+    <label className={classes}>
+      <input type="checkbox" className={`${baseClass}__input`} {...props} />
+      <span className={`${baseClass}__control`} />
+      {label && <span className={`${baseClass}__label`}>{label}</span>}
+    </label>
   );
 };
 

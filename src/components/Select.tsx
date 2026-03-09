@@ -1,21 +1,16 @@
-import React, { useId } from 'react';
+import React from 'react';
 import './select.css';
 
 export interface SelectOption {
   value: string;
   label: string;
-  disabled?: boolean;
 }
 
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  /** The options to display in the select */
+  /** The options for the select */
   options: SelectOption[];
-  /** The label for the select */
-  label?: string;
-  /** Whether the select is in an error state */
-  hasError?: boolean;
-  /** Error message to display below the select */
-  errorMessage?: string;
+  /** The size of the select */
+  size?: 'sm' | 'md' | 'lg';
   /** Custom class name */
   className?: string;
 }
@@ -23,57 +18,31 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
 /**
  * PAUL Industrial Gold Standard Select
  * 
- * A robust, accessible native select component for reliable user choices.
+ * A high-performance, accessible select component for selecting from a list of options.
  */
 export const Select: React.FC<SelectProps> = ({
   options,
-  label,
-  hasError = false,
-  errorMessage,
+  size = 'md',
   className,
-  id,
-  disabled,
   ...props
 }) => {
   const baseClass = 'paul-select';
-  const generatedId = useId();
-  const selectId = id || generatedId;
   const classes = [
     baseClass,
-    hasError && `${baseClass}--error`,
-    disabled && `${baseClass}--disabled`,
+    `${baseClass}--${size}`,
     className
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classes}>
-      {label && <label htmlFor={selectId} className={`${baseClass}__label`}>{label}</label>}
-      <div className={`${baseClass}__wrapper`}>
-        <select
-          id={selectId}
-          className={`${baseClass}__field`}
-          disabled={disabled}
-          aria-invalid={hasError}
-          aria-describedby={errorMessage ? `${selectId}-error` : undefined}
-          {...props}
-        >
-          {options.map((option) => (
-            <option 
-              key={option.value} 
-              value={option.value} 
-              disabled={option.disabled}
-            >
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <span className={`${baseClass}__icon`} aria-hidden="true">▾</span>
+    <div className={`${baseClass}__wrapper`}>
+      <select className={classes} {...props}>
+        {options.map(opt => (
+          <option key={opt.value} value={opt.value}>{opt.label}</option>
+        ))}
+      </select>
+      <div className={`${baseClass}__icon`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      {hasError && errorMessage && (
-        <div id={`${selectId}-error`} className={`${baseClass}__error-message`} role="alert">
-          {errorMessage}
-        </div>
-      )}
     </div>
   );
 };
