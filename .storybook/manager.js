@@ -5,7 +5,7 @@ const theme = create({
   base: 'light',
   brandTitle: 'PAUL',
   brandUrl: 'https://www.paul.com',
-  brandImage: '/logo.svg',
+  brandImage: '/paul_favicon.svg',
   brandTarget: '_self',
 });
 
