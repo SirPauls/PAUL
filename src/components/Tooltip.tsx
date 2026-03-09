@@ -53,7 +53,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <>
-      {React.cloneElement(children, { ref: childRef })}
+      {<span ref={childRef}>{children}</span>}
       {isVisible && (
         <div
           ref={tooltipRef}

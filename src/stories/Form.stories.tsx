@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+
 import { Form, FormControl } from '../components/Form';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';

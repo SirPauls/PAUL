@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Pagination, { type PaginationProps } from '../components/Pagination';
 import '../components/pagination.css';
 

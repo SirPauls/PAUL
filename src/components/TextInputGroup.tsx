@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, TextInputProps } from './TextInput';
+import TextInput, { type TextInputProps } from './TextInput';
 import './textinputgroup.css';
 
 export interface TextInputGroupProps extends TextInputProps {

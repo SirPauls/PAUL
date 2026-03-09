@@ -55,11 +55,12 @@ export const Carousel: React.FC<CarouselProps> = ({
           className={`${baseClass}__slider`}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {slides.map((slide, index) => (
-            <div key={index} className={`${baseClass}__slide`}>
-              {cloneElement(slide, { ...slide.props, 'aria-hidden': index !== currentIndex })}
+          {slides.map((slide, index) => {
+            const newProps = Object.assign({}, slide.props, { 'aria-hidden': index !== currentIndex });
+            return <div key={index} className={`${baseClass}__slide`}>
+              {cloneElement(slide, newProps)}
             </div>
-          ))}
+          })}
         </div>
       </div>
       {showArrows && (

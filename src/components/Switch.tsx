@@ -1,7 +1,7 @@
 import React from 'react';
 import './switch.css';
 
-export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The label for the switch */
   label?: React.ReactNode;
   /** The size of the switch */

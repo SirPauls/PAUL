@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+
 import EmptyState from '../components/EmptyState';
 import Button from '../components/Button';
 import '../components/emptystate.css';

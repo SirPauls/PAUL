@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+
 import MenuItem from '../components/MenuItem';
 import '../components/menuitem.css';
 

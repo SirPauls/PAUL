@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+
 import ContextMenu from '../components/ContextMenu';
 import '../components/contextmenu.css';
 

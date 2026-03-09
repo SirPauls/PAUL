@@ -6,7 +6,7 @@ export interface SelectOption {
   label: string;
 }
 
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   /** The options for the select */
   options: SelectOption[];
   /** The size of the select */

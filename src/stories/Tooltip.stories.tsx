@@ -1,7 +1,7 @@
 
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import Tooltip, { TooltipProps } from '../components/Tooltip';
+
+import type { Meta, StoryFn } from '@storybook/react';
+import Tooltip, { type TooltipProps } from '../components/Tooltip';
 import Button from '../components/Button';
 
 export default {

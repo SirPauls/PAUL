@@ -15,7 +15,7 @@ describe('Tooltip', () => {
   it('shows tooltip on mouse enter', async () => {
     vi.useFakeTimers();
     render(
-      <Tooltip content="Tooltip text" delay={200}>
+      <Tooltip content="Tooltip text">
         <button>Trigger</button>
       </Tooltip>
     );
@@ -36,7 +36,7 @@ describe('Tooltip', () => {
   it('hides tooltip on mouse leave', async () => {
     vi.useFakeTimers();
     render(
-      <Tooltip content="Tooltip text" delay={200}>
+      <Tooltip content="Tooltip text">
         <button>Trigger</button>
       </Tooltip>
     );
@@ -59,7 +59,7 @@ describe('Tooltip', () => {
   it('adds aria-describedby to trigger when open', async () => {
     vi.useFakeTimers();
     render(
-      <Tooltip content="Tooltip text" delay={0}>
+      <Tooltip content="Tooltip text">
         <button>Trigger</button>
       </Tooltip>
     );
@@ -82,7 +82,7 @@ describe('Tooltip', () => {
   it('handles focus events', async () => {
     vi.useFakeTimers();
     render(
-      <Tooltip content="Tooltip text" delay={0}>
+      <Tooltip content="Tooltip text">
         <button>Trigger</button>
       </Tooltip>
     );

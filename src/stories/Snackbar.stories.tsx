@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Snackbar, { type SnackbarProps } from '../components/Snackbar';
 import Button from '../components/Button';
 import '../components/snackbar.css';

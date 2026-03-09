@@ -1,7 +1,7 @@
 import React from 'react';
 import './search.css';
 
-export interface SearchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SearchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The size of the search input */
   size?: 'sm' | 'md' | 'lg';
   /** Custom class name */

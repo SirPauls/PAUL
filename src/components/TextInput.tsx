@@ -1,7 +1,7 @@
 import React from 'react';
 import './textinput.css';
 
-export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The size of the text input */
   size?: 'sm' | 'md' | 'lg';
   /** Custom class name */

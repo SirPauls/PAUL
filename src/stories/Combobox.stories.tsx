@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Combobox, { type ComboboxProps } from '../components/Combobox';
 import '../components/combobox.css';
 

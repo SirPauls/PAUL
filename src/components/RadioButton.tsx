@@ -1,7 +1,7 @@
 import React from 'react';
 import './radiobutton.css';
 
-export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The label for the radio button */
   label?: React.ReactNode;
   /** The size of the radio button */

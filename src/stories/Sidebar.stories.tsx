@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+
 import Sidebar from '../components/Sidebar';
 import Navigation from '../components/Navigation';
 import '../components/sidebar.css';

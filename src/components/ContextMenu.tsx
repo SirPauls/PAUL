@@ -29,7 +29,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const triggerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const trigger = triggerRef.current;
@@ -57,7 +57,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
 
   return (
     <>
-      {React.cloneElement(children, { ref: triggerRef })}
+      {<div ref={triggerRef}>{children}</div>}
       {isOpen && createPortal(
         <div className={classes} style={{ top: position.y, left: position.x }}>
           <ul className={`${baseClass}__list`}>

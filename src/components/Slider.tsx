@@ -1,7 +1,7 @@
 import React from 'react';
 import './slider.css';
 
-export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SliderProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The size of the slider */
   size?: 'sm' | 'md' | 'lg';
   /** Custom class name */
