@@ -1,41 +1,35 @@
-.paul-pagination {
-  display: flex;
-  justify-content: center;
-  padding: 16px 0;
-  font-family: 'Nunito Sans', sans-serif;
-}
-
 .paul-pagination__list {
   display: flex;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   gap: 8px;
 }
 
-.paul-pagination__list-item {
-  display: flex;
-  align-items: center;
-}
-
-.paul-pagination__item {
+.paul-pagination__item button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  height: 40px;
-  padding: 0 12px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  background-color: #FFFFFF;
   cursor: pointer;
-  font-size: 0.875rem;
   transition: all 0.2s;
-  color: #333;
 }
 
-.paul-pagination__item:hover:not(:disabled):not(.paul-pagination__item--active) { background-color: #f5f5f5; border-color: #999; }
-.paul-pagination__item--active { background-color: #1ea7fd; border-color: #1ea7fd; color: white; font-weight: 700; cursor: default; }
-.paul-pagination__item:disabled { opacity: 0.5; cursor: not-allowed; }
+.paul-pagination__item button:hover:not(:disabled) {
+  background-color: #F3F4F6;
+}
 
-.paul-pagination--disabled .paul-pagination__item { cursor: not-allowed; opacity: 0.5; }
+.paul-pagination__item button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paul-pagination__item button.active {
+  background-color: #111827;
+  color: #FFFFFF;
+  border-color: #111827;
+}

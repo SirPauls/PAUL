@@ -1,0 +1,65 @@
+.paul-radio-button {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.paul-radio-button__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.paul-radio-button__control {
+  display: inline-block;
+  border: 2px solid #9CA3AF;
+  border-radius: 50%;
+  transition: all 0.2s;
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+.paul-radio-button__input:checked + .paul-radio-button__control {
+  border-color: #111827;
+}
+
+.paul-radio-button__input:focus + .paul-radio-button__control {
+  outline: 2px solid #111827;
+  outline-offset: 2px;
+}
+
+.paul-radio-button__input:disabled + .paul-radio-button__control {
+  background-color: #F3F4F6;
+  border-color: #D1D5DB;
+  cursor: not-allowed;
+}
+
+.paul-radio-button__input:checked + .paul-radio-button__control::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111827;
+  border-radius: 50%;
+}
+
+.paul-radio-button__label {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Sizes */
+.paul-radio-button--sm .paul-radio-button__control { width: 16px; height: 16px; }
+.paul-radio-button--sm .paul-radio-button__label { font-size: 0.875rem; }
+.paul-radio-button--sm .paul-radio-button__input:checked + .paul-radio-button__control::after { width: 8px; height: 8px; }
+
+.paul-radio-button--md .paul-radio-button__control { width: 20px; height: 20px; }
+.paul-radio-button--md .paul-radio-button__label { font-size: 1rem; }
+.paul-radio-button--md .paul-radio-button__input:checked + .paul-radio-button__control::after { width: 10px; height: 10px; }
+
+.paul-radio-button--lg .paul-radio-button__control { width: 24px; height: 24px; }
+.paul-radio-button--lg .paul-radio-button__label { font-size: 1.125rem; }
+.paul-radio-button--lg .paul-radio-button__input:checked + .paul-radio-button__control::after { width: 12px; height: 12px; }

@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Accordion from '../components/Accordion';
 import '../components/accordion.css';
 
 /**
  * PAUL Industrial Gold Standard Accordion
  * 
- * A clean, accessible accordion for managing collapsible content sections.
+ * A sleek, high-performance accordion for managing collapsible content sections.
  */
 const meta: Meta<typeof Accordion> = {
   title: 'Content Display/Accordion',
@@ -14,21 +15,23 @@ const meta: Meta<typeof Accordion> = {
     layout: 'padded',
     docs: {
       description: {
-        component: 'A robust accordion component with multiple item support, sizing, and accessibility built-in.',
+        component: 'A robust accordion component with multiple item support, sizing, leading elements, and expand icon control.',
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
     allowMultiple: { control: 'boolean' },
+    showExpandIcon: { control: 'boolean' },
     size: {
       control: 'radio',
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md', 'lg', 'xl'],
     },
   },
   args: { 
     allowMultiple: false,
-    size: 'medium',
+    showExpandIcon: true,
+    size: 'md',
     items: [
       { id: '1', title: 'What is PAUL?', content: 'PAUL is a Pattern & Asset UI Library designed for high-performance React applications.' },
       { id: '2', title: 'Why use PAUL?', content: 'Because it sets the industrial gold standard for design systems.' },
@@ -55,45 +58,77 @@ export const AllowMultiple: Story = {
 };
 
 /**
- * Demonstrating different sizes.
+ * Demonstrating different sizes from the Figma design.
  */
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div key="small">
-        <h4>Small</h4>
-        <Accordion {...args} items={args.items} size="small" />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div key="sm">
+        <h4 style={{ marginBottom: '12px' }}>Small (sm)</h4>
+        <Accordion {...args} items={args.items} size="sm" />
       </div>
-      <div key="medium">
-        <h4>Medium (Default)</h4>
-        <Accordion {...args} items={args.items} size="medium" />
+      <div key="md">
+        <h4 style={{ marginBottom: '12px' }}>Medium (md)</h4>
+        <Accordion {...args} items={args.items} size="md" />
       </div>
-      <div key="large">
-        <h4>Large</h4>
-        <Accordion {...args} items={args.items} size="large" />
+      <div key="lg">
+        <h4 style={{ marginBottom: '12px' }}>Large (lg)</h4>
+        <Accordion {...args} items={args.items} size="lg" />
+      </div>
+      <div key="xl">
+        <h4 style={{ marginBottom: '12px' }}>Extra Large (xl)</h4>
+        <Accordion {...args} items={args.items} size="xl" />
       </div>
     </div>
   ),
 };
 
 /**
- * Demonstrating content variations.
+ * Demonstrating leading elements (icons).
  */
-export const ContentVariations: Story = {
+export const LeadingElements: Story = {
   args: {
     items: [
-      { id: '1', title: 'Simple Content', content: 'Just some plain text here.' },
-      { id: '2', title: 'Rich Content', content: (
-        <div>
-          <p>This item contains <strong>rich content</strong> like lists:</p>
-          <ul>
-            <li>Item one</li>
-            <li>Item two</li>
-          </ul>
-        </div>
-      ) },
-      { id: '3', title: 'Long Title That Might Wrap If The Container Is Too Small For It', content: 'The content remains stable.' },
+      { 
+        id: '1', 
+        title: 'Account Settings', 
+        content: 'Manage your profile, email, and security settings.',
+        leadingElement: (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        )
+      },
+      { 
+        id: '2', 
+        title: 'Notifications', 
+        content: 'Control how you receive alerts and updates.',
+        leadingElement: (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        )
+      },
+      { 
+        id: '3', 
+        title: 'Billing History', 
+        content: 'View your invoices and payment methods.',
+        leadingElement: (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        )
+      },
     ],
+  },
+};
+
+/**
+ * Demonstrating accordion without expand icons.
+ */
+export const NoExpandIcon: Story = {
+  args: {
+    showExpandIcon: false,
   },
 };
 
@@ -109,34 +144,4 @@ export const States: Story = {
     ],
     initialOpenIds: ['3'],
   },
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
-  args: {
-    items: [
-      { id: '1', title: 'Focus Management', content: 'Keyboard users can navigate using Tab and toggle with Enter/Space.' },
-      { id: '2', title: 'ARIA Roles', content: 'Appropriate roles (region, button) and attributes (aria-expanded) are used.' },
-    ],
-  },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <h3>Empty List</h3>
-        <Accordion {...args} items={[]} />
-      </div>
-      <div>
-        <h3>Very Long Content</h3>
-        <Accordion {...args} items={[{ id: '1', title: 'Long Content', content: 'Lorem '.repeat(100) }]} />
-      </div>
-    </div>
-  ),
 };

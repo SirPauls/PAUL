@@ -1,0 +1,14 @@
+.paul-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background-color: #F9FAFB;
+  border-right: 1px solid #E5E7EB;
+  padding: 24px;
+  gap: 24px;
+}
+
+.paul-sidebar--right {
+  border-right: none;
+  border-left: 1px solid #E5E7EB;
+}

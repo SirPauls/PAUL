@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import Badge from '../components/Badge';
 import '../components/badge.css';
 
 /**
  * PAUL Industrial Gold Standard Badge
  * 
- * A sleek, versatile badge component for displaying status or metadata.
+ * A sleek, high-performance badge component for displaying status or metadata.
  */
 const meta: Meta<typeof Badge> = {
   title: 'Indicators & Status/Badge',
@@ -14,7 +15,7 @@ const meta: Meta<typeof Badge> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A versatile badge component with multiple variants, sizes, and shapes.',
+        component: 'A versatile badge component with support for leading/trailing elements and multiple sizes.',
       },
     },
   },
@@ -27,20 +28,14 @@ const meta: Meta<typeof Badge> = {
     },
     size: {
       control: 'radio',
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md'],
       description: 'The size of the badge',
-    },
-    shape: {
-      control: 'radio',
-      options: ['rounded', 'pill', 'square'],
-      description: 'The shape of the badge',
     },
   },
   args: { 
-    children: 'Badge',
+    children: 'Your chip text',
     variant: 'default',
-    size: 'medium',
-    shape: 'pill',
+    size: 'md',
   },
 };
 
@@ -69,64 +64,91 @@ export const Variants: Story = {
 };
 
 /**
- * Demonstrating different sizes.
+ * Demonstrating different sizes from Figma.
  */
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      <Badge {...args} size="small">Small</Badge>
-      <Badge {...args} size="medium">Medium</Badge>
-      <Badge {...args} size="large">Large</Badge>
+      <Badge {...args} size="sm">Small (sm)</Badge>
+      <Badge {...args} size="md">Medium (md)</Badge>
     </div>
   ),
 };
 
 /**
- * Demonstrating different shapes.
+ * Demonstrating badges with leading and trailing elements.
  */
-export const Shapes: Story = {
+export const WithElements: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      <Badge {...args} shape="rounded">Rounded</Badge>
-      <Badge {...args} shape="pill">Pill</Badge>
-      <Badge {...args} shape="square">Square</Badge>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <Badge 
+          {...args} 
+          leadingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          }
+        >
+          Leading Icon
+        </Badge>
+        <Badge 
+          {...args} 
+          trailingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          }
+        >
+          Trailing Icon
+        </Badge>
+        <Badge 
+          {...args} 
+          leadingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/></svg>
+          }
+          trailingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/></svg>
+          }
+        >
+          Both Icons
+        </Badge>
+      </div>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <Badge 
+          {...args} 
+          size="sm"
+          leadingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          }
+        >
+          Small Leading
+        </Badge>
+        <Badge 
+          {...args} 
+          size="sm"
+          trailingElement={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          }
+        >
+          Small Trailing
+        </Badge>
+      </div>
     </div>
   ),
 };
 
 /**
- * Demonstrating content variations.
+ * Demonstrating icons only.
  */
-export const ContentVariations: Story = {
+export const IconsOnly: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      <Badge {...args}>1</Badge>
-      <Badge {...args}>New</Badge>
-      <Badge {...args}>Hot Fixed</Badge>
-      <Badge {...args}>99+</Badge>
-    </div>
-  ),
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
-  args: {
-    children: 'High Priority',
-    'aria-label': 'Status: High Priority',
-  },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-      <Badge {...args}>Very long badge content that might wrap or overflow in its container</Badge>
-      <Badge {...args}>{''}</Badge>
-      <Badge {...args}> </Badge>
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Badge 
+        {...args} 
+        leadingElement={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/></svg>}
+      />
+      <Badge 
+        {...args} 
+        size="sm"
+        leadingElement={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/></svg>}
+      />
     </div>
   ),
 };

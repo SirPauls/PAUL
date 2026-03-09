@@ -5,6 +5,8 @@ export interface AccordionItem {
   id: string;
   title: string;
   content: React.ReactNode;
+  /** Optional leading element (e.g., icon) */
+  leadingElement?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -16,7 +18,9 @@ export interface AccordionProps {
   /** Initial open items */
   initialOpenIds?: string[];
   /** Size variation */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Whether to show the expand/collapse icon */
+  showExpandIcon?: boolean;
   /** Custom class name */
   className?: string;
 }
@@ -24,13 +28,14 @@ export interface AccordionProps {
 /**
  * PAUL Industrial Gold Standard Accordion
  * 
- * A clean, accessible accordion for managing collapsible content sections.
+ * A sleek, high-performance accordion for managing collapsible content sections.
  */
 export const Accordion: React.FC<AccordionProps> = ({
   items,
   allowMultiple = false,
   initialOpenIds = [],
-  size = 'medium',
+  size = 'md',
+  showExpandIcon = true,
   className,
 }) => {
   const [openIds, setOpenIds] = useState<string[]>(initialOpenIds);
@@ -65,11 +70,30 @@ export const Accordion: React.FC<AccordionProps> = ({
               aria-expanded={isOpen}
               disabled={item.disabled}
             >
-              <span className={`${baseClass}__title`}>{item.title}</span>
-              <span className={`${baseClass}__icon`} aria-hidden="true">
-                {isOpen ? '−' : '+'}
-              </span>
+              <div className={`${baseClass}__header-left`}>
+                {item.leadingElement && (
+                  <span className={`${baseClass}__leading-element`}>
+                    {item.leadingElement}
+                  </span>
+                )}
+                <span className={`${baseClass}__title`}>{item.title}</span>
+              </div>
+              {showExpandIcon && (
+                <span className={`${baseClass}__expand-icon`} aria-hidden="true">
+                  <svg 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
+                  >
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              )}
             </button>
+            {isOpen && <div className={`${baseClass}__divider`} />}
             <div 
               className={`${baseClass}__panel`}
               hidden={!isOpen}

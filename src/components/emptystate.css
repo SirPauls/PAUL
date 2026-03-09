@@ -1,0 +1,39 @@
+.paul-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px;
+  background-color: #F9FAFB;
+  border-radius: 12px;
+}
+
+.paul-empty-state__icon {
+  margin-bottom: 24px;
+  color: #9CA3AF;
+}
+
+.paul-empty-state__icon svg {
+  width: 64px;
+  height: 64px;
+}
+
+.paul-empty-state__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px;
+}
+
+.paul-empty-state__description {
+  font-size: 1.125rem;
+  color: #6B7280;
+  margin: 0 0 24px;
+  max-width: 480px;
+}
+
+.paul-empty-state__action {
+  display: flex;
+  gap: 12px;
+}

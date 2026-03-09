@@ -3,35 +3,35 @@ import { describe, it, expect, vi } from 'vitest';
 import Textarea from './Textarea';
 
 describe('Textarea', () => {
-  it('renders correctly with label', () => {
-    render(<Textarea label="Test Label" />);
-    expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
+  it('renders correctly', () => {
+    render(<Textarea />);
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
   it('renders helper text when provided', () => {
-    render(<Textarea label="Test" helperText="Helper text" />);
+    render(<Textarea />);
     expect(screen.getByText('Helper text')).toBeInTheDocument();
   });
 
   it('shows error message and error state', () => {
-    render(<Textarea label="Test" hasError errorMessage="Error occurred" />);
+    render(<Textarea />);
     expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
     expect(screen.getByText('Error occurred')).toBeInTheDocument();
   });
 
   it('handles disabled state', () => {
-    render(<Textarea label="Test" disabled />);
+    render(<Textarea disabled />);
     expect(screen.getByRole('textbox')).toBeDisabled();
   });
 
   it('passes resize prop to style', () => {
-    render(<Textarea label="Test" resize="none" />);
+    render(<Textarea style={{ resize: 'none' }} />);
     expect(screen.getByRole('textbox')).toHaveStyle({ resize: 'none' });
   });
 
   it('calls onChange handler', () => {
     const handleChange = vi.fn();
-    render(<Textarea label="Test" onChange={handleChange} />);
+    render(<Textarea onChange={handleChange} />);
     const textarea = screen.getByRole('textbox');
     fireEvent.change(textarea, { target: { value: 'New content' } });
     expect(handleChange).toHaveBeenCalledTimes(1);

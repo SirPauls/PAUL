@@ -6,7 +6,7 @@ import '../components/alert.css';
 /**
  * PAUL Industrial Gold Standard Alert
  * 
- * A reliable, informative alert component for communicating important feedback.
+ * A sleek, high-performance alert component for communicating important feedback.
  */
 const meta: Meta<typeof Alert> = {
   title: 'Messaging & Feedback/Alert',
@@ -15,7 +15,7 @@ const meta: Meta<typeof Alert> = {
     layout: 'padded',
     docs: {
       description: {
-        component: 'A versatile alert component with multiple types, custom titles, and dismissible options.',
+        component: 'A versatile alert component with support for icons, titles, and closing actions.',
       },
     },
   },
@@ -26,15 +26,19 @@ const meta: Meta<typeof Alert> = {
       options: ['info', 'success', 'warning', 'error'],
       description: 'The visual style of the alert',
     },
-    persistent: { control: 'boolean' },
+    showIcon: { control: 'boolean' },
+    showTitle: { control: 'boolean' },
+    showClose: { control: 'boolean' },
     onClose: { action: 'onClose' },
   },
   args: { 
     type: 'info',
-    title: 'Heads up!',
-    children: 'This is a standard alert message.',
+    title: 'Alert title',
+    children: 'Pull request #9999 merged after a successful build',
+    showIcon: true,
+    showTitle: true,
+    showClose: true,
     onClose: fn(),
-    persistent: false,
   },
 };
 
@@ -61,55 +65,26 @@ export const Variants: Story = {
 };
 
 /**
- * Demonstrating interactive states.
+ * Demonstrating different combinations of elements based on Figma.
  */
-export const States: Story = {
+export const ElementCombinations: Story = {
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Alert {...args} title="Dismissible Alert">You can close this alert.</Alert>
-      <Alert {...args} title="Persistent Alert" persistent>This alert cannot be closed by the user.</Alert>
-    </div>
-  ),
-};
-
-/**
- * Demonstrating different content variations.
- */
-export const ContentVariations: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Alert {...args} title="Short Title">Short content.</Alert>
-      <Alert {...args} title="Long Title and Content">
-        This is a much longer alert message that explains something in great detail, 
-        potentially spanning across multiple lines to show how the layout adapts.
+      <Alert {...args} showIcon={true} showTitle={true} showClose={true}>
+        Full alert with icon, title and close button.
       </Alert>
-      <Alert {...args}>Alert with no title, only content.</Alert>
-    </div>
-  ),
-};
-
-/**
- * Demonstrating accessibility features.
- */
-export const Accessibility: Story = {
-  args: {
-    type: 'error',
-    title: 'Screen Reader Alert',
-    children: 'This alert uses role="alert" to ensure screen readers announce it immediately.',
-  },
-};
-
-/**
- * Demonstrating edge cases.
- */
-export const EdgeCases: Story = {
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Alert {...args} title="">Alert with an empty title string.</Alert>
-      <Alert {...args} title="Empty Content">{''}</Alert>
-      <div style={{ width: '200px' }}>
-        <Alert {...args} title="Narrow Context">Alert in a very narrow container.</Alert>
-      </div>
+      <Alert {...args} showIcon={false} showTitle={true} showClose={true}>
+        Alert without icon.
+      </Alert>
+      <Alert {...args} showIcon={true} showTitle={false} showClose={true}>
+        Alert without title.
+      </Alert>
+      <Alert {...args} showIcon={true} showTitle={true} showClose={false}>
+        Alert without close button.
+      </Alert>
+      <Alert {...args} showIcon={false} showTitle={false} showClose={false}>
+        Minimal alert with only description.
+      </Alert>
     </div>
   ),
 };

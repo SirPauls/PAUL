@@ -1,11 +1,11 @@
-import React, { useId } from 'react';
+import React from 'react';
 import './switch.css';
 
-export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The label for the switch */
-  label?: string;
-  /** Whether the switch is in an error state */
-  hasError?: boolean;
+  label?: React.ReactNode;
+  /** The size of the switch */
+  size?: 'sm' | 'md' | 'lg';
   /** Custom class name */
   className?: string;
 }
@@ -13,38 +13,27 @@ export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement>
 /**
  * PAUL Industrial Gold Standard Switch
  * 
- * A high-precision, interactive toggle for instantaneous state changes.
+ * A high-performance, accessible switch for toggling a state.
  */
 export const Switch: React.FC<SwitchProps> = ({
   label,
-  hasError = false,
+  size = 'md',
   className,
-  id,
   ...props
 }) => {
   const baseClass = 'paul-switch';
-  const generatedId = useId();
-  const switchId = id || generatedId;
   const classes = [
     baseClass,
-    hasError && `${baseClass}--error`,
+    `${baseClass}--${size}`,
     className
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classes}>
-      <label htmlFor={switchId} className={`${baseClass}__wrapper`}>
-        <input
-          type="checkbox"
-          id={switchId}
-          className={`${baseClass}__input`}
-          role="switch"
-          {...props}
-        />
-        <span className={`${baseClass}__slider`} aria-hidden="true" />
-        {label && <span className={`${baseClass}__label`}>{label}</span>}
-      </label>
-    </div>
+    <label className={classes}>
+      <input type="checkbox" role="switch" className={`${baseClass}__input`} {...props} />
+      <span className={`${baseClass}__slider`} />
+      {label && <span className={`${baseClass}__label`}>{label}</span>}
+    </label>
   );
 };
 

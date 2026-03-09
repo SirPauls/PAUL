@@ -3,14 +3,13 @@ import './table.css';
 
 export interface TableColumn {
   key: string;
-  header: string;
-  width?: string | number;
+  title: string;
 }
 
 export interface TableProps {
-  /** The columns to display in the table */
+  /** The columns of the table */
   columns: TableColumn[];
-  /** The data to display in the rows */
+  /** The data for the table */
   data: Record<string, React.ReactNode>[];
   /** Custom class name */
   className?: string;
@@ -19,7 +18,7 @@ export interface TableProps {
 /**
  * PAUL Industrial Gold Standard Table
  * 
- * A clean, high-performance table component for structured data presentation.
+ * A component for displaying data in a tabular format.
  */
 export const Table: React.FC<TableProps> = ({
   columns,
@@ -30,34 +29,20 @@ export const Table: React.FC<TableProps> = ({
   const classes = [baseClass, className].filter(Boolean).join(' ');
 
   return (
-    <div className={`${baseClass}__wrapper`}>
-      <table className={classes}>
-        <thead className={`${baseClass}__thead`}>
-          <tr className={`${baseClass}__row`}>
-            {columns.map((col) => (
-              <th 
-                key={col.key} 
-                className={`${baseClass}__header`}
-                style={{ width: col.width }}
-              >
-                {col.header}
-              </th>
-            ))}
+    <table className={classes}>
+      <thead>
+        <tr>
+          {columns.map(col => <th key={col.key}>{col.title}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {columns.map(col => <td key={col.key}>{row[col.key]}</td>)}
           </tr>
-        </thead>
-        <tbody className={`${baseClass}__tbody`}>
-          {data.map((row, rowIndex) => (
-            <tr key={rowIndex} className={`${baseClass}__row`}>
-              {columns.map((col) => (
-                <td key={col.key} className={`${baseClass}__cell`}>
-                  {row[col.key]}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

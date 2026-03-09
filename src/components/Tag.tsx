@@ -1,13 +1,11 @@
 import React from 'react';
 import './tag.css';
 
-export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** The label to display in the tag */
-  label: string;
-  /** The color scheme of the tag */
-  color?: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
-  /** The size of the tag */
-  size?: 'small' | 'medium';
+export interface TagProps {
+  /** The content of the tag */
+  children: React.ReactNode;
+  /** The visual style of the tag */
+  variant?: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info';
   /** Custom class name */
   className?: string;
 }
@@ -15,26 +13,23 @@ export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
 /**
  * PAUL Industrial Gold Standard Tag
  * 
- * A compact, non-interactive tag component for categorization and metadata.
+ * A component for labeling and categorizing content.
  */
 export const Tag: React.FC<TagProps> = ({
-  label,
-  color = 'default',
-  size = 'medium',
+  children,
+  variant = 'default',
   className,
-  ...props
 }) => {
   const baseClass = 'paul-tag';
   const classes = [
     baseClass,
-    `${baseClass}--${color}`,
-    `${baseClass}--${size}`,
+    `${baseClass}--${variant}`,
     className
   ].filter(Boolean).join(' ');
 
   return (
-    <span className={classes} {...props}>
-      {label}
+    <span className={classes}>
+      {children}
     </span>
   );
 };

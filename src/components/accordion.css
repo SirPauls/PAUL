@@ -1,20 +1,26 @@
 .paul-accordion {
   width: 100%;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border: 1px solid #E0E0E0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #FFFFFF;
 }
 
 .paul-accordion__item {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #E0E0E0;
+  transition: all 0.2s ease-in-out;
 }
 
 .paul-accordion__item:last-child {
   border-bottom: none;
 }
 
+.paul-accordion__item--open {
+  background-color: #FFFFFF;
+}
+
 .paul-accordion__header {
   width: 100%;
-  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,10 +29,11 @@
   cursor: pointer;
   text-align: left;
   transition: background-color 0.2s;
+  padding: 16px 20px;
 }
 
 .paul-accordion__header:hover:not(:disabled) {
-  background-color: #f5f5f5;
+  background-color: #F9FAFB;
 }
 
 .paul-accordion__header:disabled {
@@ -34,28 +41,113 @@
   opacity: 0.5;
 }
 
-.paul-accordion__title {
-  font-weight: 600;
-  color: #333;
+.paul-accordion__header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.paul-accordion__icon {
-  font-size: 1.2rem;
-  color: #666;
+.paul-accordion__leading-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+}
+
+.paul-accordion__title {
+  font-weight: 700;
+  color: #111827;
+}
+
+.paul-accordion__expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  transition: transform 0.2s ease;
+}
+
+.paul-accordion__divider {
+  height: 1px;
+  background-color: #E0E0E0;
+  margin: 0 20px;
 }
 
 .paul-accordion__panel {
-  padding: 0 16px;
-  background-color: white;
   overflow: hidden;
+  background-color: #FFFFFF;
 }
 
 .paul-accordion__content {
-  padding: 16px 0;
-  color: #666;
+  padding: 16px 20px;
+  color: #4B5563;
   line-height: 1.6;
+  
 }
 
 /* Sizes */
-.paul-accordion--small .paul-accordion__header { padding: 8px 12px; font-size: 0.875rem; }
-.paul-accordion--large .paul-accordion__header { padding: 24px; font-size: 1.125rem; }
+
+/* XL */
+.paul-accordion--xl .paul-accordion__header {
+  padding: 20px 24px;
+}
+.paul-accordion--xl .paul-accordion__title {
+  font-size: 1.125rem; /* text-md */
+}
+.paul-accordion--xl .paul-accordion__divider {
+  margin: 0 24px;
+}
+.paul-accordion--xl .paul-accordion__content {
+  padding: 20px 24px;
+}
+
+/* LG */
+.paul-accordion--lg .paul-accordion__header {
+  padding: 16px 20px;
+}
+.paul-accordion--lg .paul-accordion__title {
+  font-size: 1rem; /* text-sm in figma but 1rem is usually md/lg */
+}
+.paul-accordion--lg .paul-accordion__divider {
+  margin: 0 20px;
+}
+.paul-accordion--lg .paul-accordion__content {
+  padding: 16px 20px;
+}
+
+/* MD (Default) */
+.paul-accordion--md .paul-accordion__header {
+  padding: 14px 18px;
+}
+.paul-accordion--md .paul-accordion__title {
+  font-size: 0.875rem; /* text-sm */
+}
+.paul-accordion--md .paul-accordion__divider {
+  margin: 0 18px;
+}
+.paul-accordion--md .paul-accordion__content {
+  padding: 14px 18px;
+}
+
+/* SM */
+.paul-accordion--sm .paul-accordion__header {
+  padding: 10px 14px;
+}
+.paul-accordion--sm .paul-accordion__title {
+  font-size: 0.75rem; /* text-xs */
+}
+.paul-accordion--sm .paul-accordion__divider {
+  margin: 0 14px;
+}
+.paul-accordion--sm .paul-accordion__content {
+  padding: 10px 14px;
+}
+
+/* Disabled State */
+.paul-accordion__item--disabled .paul-accordion__header {
+  cursor: not-allowed;
+  background-color: #F3F4F6;
+}
+.paul-accordion__item--disabled .paul-accordion__title {
+  color: #9CA3AF;
+}

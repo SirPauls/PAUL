@@ -1,0 +1,26 @@
+.paul-text-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.paul-text-input-group .paul-text-input {
+  border: none;
+  border-radius: 0;
+}
+
+.paul-text-input-group__addon {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background-color: #F9FAFB;
+  color: #6B7280;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.paul-text-input-group:focus-within {
+  border-color: #111827;
+}
