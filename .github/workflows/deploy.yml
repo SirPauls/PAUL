@@ -1,0 +1,32 @@
+name: Deploy to CloudPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.CLOUDPANEL_HOST }}
+          username: ${{ secrets.CLOUDPANEL_USER }}
+          key: ${{ secrets.CLOUDPANEL_SSH_KEY }}
+          port: ${{ secrets.CLOUDPANEL_PORT }}
+          script: |
+            set -e
+
+            cd ~/htdocs/paul.sirpauls.com
+
+            git pull origin main
+
+            pnpm install --frozen-lockfile
+
+            pnpm build
+
+            rsync -a --delete dist/ ~/htdocs/paul.sirpauls.com/public/
