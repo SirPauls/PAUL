@@ -8,6 +8,8 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+      // This prevents the "Save as new story" prompt in the Controls panel
+      disableSaveFromUI: true,
     },
   },
 };
