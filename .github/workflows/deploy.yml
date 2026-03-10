@@ -25,5 +25,6 @@ jobs:
             set -e
             cd ~/htdocs/paul.sirpauls.com
             git pull origin main
+            nvm use --lts
             pnpm install --frozen-lockfile
             pnpm build
