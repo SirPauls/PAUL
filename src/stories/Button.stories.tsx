@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import Button from '../components/Button';
 import '../components/button.css';
+import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
 
 /**
  * PAUL Industrial Gold Standard Button
@@ -34,6 +35,30 @@ const meta: Meta<typeof Button> = {
     },
     isLoading: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    leftIcon: {
+      control: 'radio',
+      options: ['none', 'arrow'],
+      mapping: {
+        none: undefined,
+        arrow: <ArrowLeftIcon />,
+      },
+    },
+    rightIcon: {
+      control: 'radio',
+      options: ['none', 'arrow'],
+      mapping: {
+        none: undefined,
+        arrow: <ArrowRightIcon />,
+      },
+    },
+    iconOnly: {
+      control: 'radio',
+      options: ['none', 'arrow'],
+      mapping: {
+        none: undefined,
+        arrow: <ArrowRightIcon />,
+      },
+    },
   },
   args: { 
     onClick: fn(),

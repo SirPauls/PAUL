@@ -4,7 +4,7 @@ import { create } from '@storybook/theming/create';
 const theme = create({
   base: 'light',
   brandTitle: 'PAUL',
-  brandUrl: 'https://www.paul.com',
+  brandUrl: 'https://www.sirpauls.com',
   brandImage: '/paul_favicon.svg',
   brandTarget: '_self',
 });
