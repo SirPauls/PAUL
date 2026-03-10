@@ -6,6 +6,7 @@ export interface NavigationItem {
   label: string;
   href: string;
   active?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export interface NavigationProps {
@@ -34,6 +35,14 @@ export const Navigation: React.FC<NavigationProps> = ({
     className
   ].filter(Boolean).join(' ');
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem) => {
+    // Prevent default link behavior in Storybook
+    if (item.onClick) {
+      item.onClick(e);
+    }
+    e.preventDefault();
+  };
+
   return (
     <nav className={classes}>
       <ul className={`${baseClass}__list`}>
@@ -43,6 +52,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               href={item.href} 
               className={`${baseClass}__link ${item.active ? 'active' : ''}`}
               aria-current={item.active ? 'page' : undefined}
+              onClick={(e) => handleClick(e, item)}
             >
               {item.label}
             </a>
