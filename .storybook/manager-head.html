@@ -3,4 +3,15 @@
   img[alt="PAUL"] {
     height: 50px !important;
   }
+
+  /* Hides the 'Add New Story' / '+' button next to the search field */ 
+  .search-field + div:has(> button > svg) { 
+    display: none !important; 
+  } 
+
+  /* Alternative selector if the one above doesn't match your exact build */ 
+  button[title^="Create"], 
+  button[aria-label^="Create"] { 
+    display: none !important; 
+  } 
 </style>

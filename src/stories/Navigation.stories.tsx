@@ -29,7 +29,16 @@ const meta: Meta<typeof Navigation> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Horizontal: Story = {};
+export const Horizontal: Story = {
+  args: {
+    items: [
+      { id: '1', label: 'Home', href: '#', active: true },
+      { id: '2', label: 'About', href: '#' },
+      { id: '3', label: 'Products', href: '#' },
+      { id: '4', label: 'Contact', href: '#' },
+    ],
+  },
+};
 
 export const Vertical: Story = {
   args: {
