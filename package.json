@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -36,6 +37,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "chromatic": "^15.2.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
@@ -51,7 +53,11 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "^8.0.0-beta.13"
+      "vite": "^8.0.0-beta.13",
+      "@storybook/blocks": "9.0.0-alpha.17",
+      "@storybook/manager-api": "9.0.0-alpha.1",
+      "@storybook/test": "9.0.0-alpha.2",
+      "@storybook/theming": "9.0.0-alpha.1"
     }
   },
   "eslintConfig": {
