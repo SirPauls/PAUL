@@ -11,22 +11,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          host: ${{ secrets.CLOUDPANEL_HOST }}
-          username: ${{ secrets.CLOUDPANEL_USER }}
-          key: ${{ secrets.CLOUDPANEL_SSH_KEY }}
-          port: ${{ secrets.CLOUDPANEL_PORT }}
-          script: |
-            set -e
+          version: latest
 
-            cd ~/htdocs/paul.sirpauls.com
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
-            git pull origin main
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
 
-            pnpm build
-
-            rsync -a --delete dist/ ~/htdocs/paul.sirpauls.com/public/
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -az --delete
+          path: dist/
+          remote_path: ~/htdocs/paul.sirpauls.com/public
+          remote_host: ${{ secrets.CLOUDPANEL_HOST }}
+          remote_port: ${{ secrets.CLOUDPANEL_PORT }}
+          remote_user: ${{ secrets.CLOUDPANEL_USER }}
+          remote_key: ${{ secrets.CLOUDPANEL_SSH_KEY }}
