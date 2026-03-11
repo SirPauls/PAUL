@@ -1,69 +1,83 @@
-
+@import url("./reset.css");
+@import url("./responsive.css");
+@import url("./theme.css");
+@import url("./icons.css");
 
 :root {
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --global-focus-ring-size: var(--sds-size-stroke-focus-ring);
+  --global-focus-ring-color: rgb(0, 106, 255);
+  --global-line-height-paragraph: 1.4;
+  --global-stack-top: 999;
+  --global-stack-focus: 999;
+  --global-stack-dialog-backdrop: 9999;
+  --global-stack-dialog-container: 99999;
+  --global-container-max-width: 75rem;
+  --global-dialog-max-width: 32rem;
+  --global-tooltip-max-width: calc(var(--global-dialog-max-width) / 2);
+  --global-line-height-body: 1.6;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.display-none-to-flex {
+  display: var(--sds-responsive-display-none-to-flex) !important;
 }
-a:hover {
-  color: #535bf2;
+.display-flex-to-none {
+  display: var(--sds-responsive-display-flex-to-none) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --global-focus-ring-color: rgb(0, 106, 255);
+  }
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
+  background: var(--sds-color-background-default-default);
+  color: var(--sds-color-text-default-default);
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html,
+body {
+  height: 100%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+#root {
+  min-height: 100%;
+  width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+body,
+button,
+textarea,
+input,
+select {
+  font: var(--sds-font-body-base);
+}
+
+pre,
+code {
+  font: var(--sds-font-body-code);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: var(--sds-font-heading);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }

@@ -7,23 +7,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
 node_modules
-.pnpm-store
-
-# Build artifacts
 dist
 dist-ssr
-build
-coverage
-*.tsbuildinfo
-
-# Environment files
+*.local
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.VSCodeCounter
 
 # Editor directories and files
 .vscode/*
@@ -35,8 +24,4 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-
-# Storybook
-storybook-static
 *storybook.log
-stats.html

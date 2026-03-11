@@ -1,43 +1,139 @@
-# PAUL (Pattern & Asset UI Library)
+# Simple Design System (alpha)
 
-> **Note:** This project is currently in **Pre-Alpha**. APIs are subject to change.
+Using Figma's [Code Connect](https://github.com/figma/code-connect).
 
-## The Vision: Defining the Digital Era
+Simple Design System (SDS) is a base design system that shows how Figma’s Variables, Styles, Components, and Code Connect can be used alongside a React codebase to form a complete picture of a responsive web design system.
 
-We live in an age of the ephemeral—interfaces that flicker and fade, built for the moment rather than for the mission. **PAUL (Pattern & Asset UI Library)** is the antidote. 
+SDS is not just another design system in Figma. There are still many gaps between design and development, and SDS provides some best practices for how to bridge them. SDS tries to remain honest about its implications in code, while also offering customizability in design beyond the simple theming layer that is typical of many code-first component libraries.
 
-We exist to define a new era of visual harmony. We are the architects of permanence, bridging the gap between visionary design and high-performance engineering. Our goal is to establish a foundation where industrial-grade precision meets the fluid elegance of human-centric design. This is more than a library; it’s the bedrock of digital craftsmanship.
+Whether you’re looking to use SDS to start a new project, or are looking for examples of some common design systems best practices, you'll find tools inside this codebase and design file to steer you in the right direction.
 
----
+## Resources
 
-## The Philosophy: The Golden Thread
+- [Storybook](https://figma.github.io/sds/storybook)
+- [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system)
 
-Design is a journey from the abstract to the tangible. Too often, the soul of an idea is lost along the way. We call our solution **The Golden Thread**.
+## Setup
 
-It is the unbreakable connection that weaves the limitless creative freedom of **Figma** into the robust, uncompromising reality of **React**. We’ve eliminated the friction of "lost in translation," ensuring that the designer’s intent remains pristine from the first sketch to the final user experience. It’s where the art of the possible meets the science of the certain.
+- `npm i` to install dependencies
+- `npm run app:dev` will run server at [localhost:8000](http://localhost:8000) which renders contents of [App.tsx](src/App.tsx)
+- `npm run storybook` to start storybook at [localhost:6006](http://localhost:6006)
 
----
+### Figma Auth
 
-## The Standard: Industrial Gold
+- [Create a Figma API token](https://www.figma.com/developers/api#authentication)
+  - Add Code Connect scope
+  - Add File Read, Dev Resources Write, and Variables scopes if you want to use the integrations in [scripts](./scripts/)
+  - [More on scopes](https://www.figma.com/developers/api#authentication-scopes)
+- Duplicate [.env-rename](./.env-rename)
+- Rename it to `.env`, it will be ignored from git.
+  - Set `FIGMA_ACCESS_TOKEN=` as your token in `.env`
+  - Set `FIGMA_FILE_KEY=` as your file's key (grab it from the file URL) in `.env`
 
-The **Industrial Gold Standard** isn't a badge; it's a commitment. It’s the belief that every component should be as reliable as a master-crafted tool and as beautiful as a gallery piece.
+### Code Connect
 
-- **Uncompromising Quality**: We refine until we reach a state of singular perfection. 
-- **Timeless Patterns**: We build for endurance, not for trends. Our patterns are designed to remain relevant as the digital landscape evolves.
-- **Sovereign Precision**: Meticulous attention to detail is our baseline. Every interaction is deliberate; every pixel has a purpose.
+SDS is fully backed by Figma's Code Connect. This includes examples for how to connect [primitives](./src/figma/primitives/), as well as [compositions](./src/figma/compositions/) of those primitives for your design system.
 
-This is the benchmark. A library built to endure, providing the stability and sophistication required for world-class product development.
+This repo utilizes `documentUrlSubstitutions` in [figma.config.json](./figma.config.json). This allows us to keep our docs Figma file-agnostic and colocates all the Figma file-specific information for easy url swapping. The document URL substitutions are also named in a way that helps you find the associated component without clicking a link. A key `<FIGMA_INPUTS_CHECKBOX_GROUP>` is broken down as `<FIGMA_[PAGE_NAME]_[COMPONENT_NAME]>`.
 
----
+```json
+{
+  "documentUrlSubstitutions": {
+    "<FIGMA_INPUTS_CHECKBOX_GROUP>": "https://figma.com/design/whatever?node-id=123-456"
+  }
+}
+```
 
-## The Invitation: A Call to Craft
+Allows us to have more expressive URLs in our Code Connect docs:
 
-We are embarking on a journey to redefine the very fabric of how we build. This is more than a project; it is an invitation to those who value craftsmanship over convenience.
+```js
+figma.connect(CheckboxGroup, "<FIGMA_INPUTS_CHECKBOX_GROUP>");
+```
 
-To the visionaries, the perfectionists, and the pioneers: help us build the next generation of digital infrastructure. Let’s create something that doesn't just work—something that inspires. 
+### Connecting this repo to a duplicated Figma file
 
-**Welcome to the new standard.**
+With the above in mind, a fresh clone of the Simple Design System Figma file should maintain all the node-ids. The steps should be as follows:
 
----
+- Duplicate the [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system)
+- Clone this repo
+- Update urls in [figma.config.json](./figma.config.json) to point to your Figma file
+  - Note: the file keys (eg. `J0KLPKXiONDRssXD1AX9Oi`) should be the only change in the urls unless you're creating new components, detaching and recreating.
+- Create and set your [Figma Auth Token](#figma-auth)
+- At that point, `npx figma connect publish` should work and your new file should have Code Connect.
 
-*Crafted with intention by **SirPauls Digital Agency**.*
+## Structure
+
+All components and styles are in [src/ui](./src/ui). Within that directory, code is broken down into a few categories.
+
+### [src/ui/compositions](./src/ui/compositions/)
+
+Example arrangements of primitive components to demonstrate how you might use SDS to build a responsive website.
+
+### [src/ui/hooks](./src/ui/hooks/)
+
+Custom React hook definitions
+
+### [src/ui/icons](./src/ui/icons/)
+
+All icon components. Automatically generated by [scripts/icons](./scripts/icons)
+
+### [src/ui/images](./src/ui/images/)
+
+Placeholder images.
+
+### [src/ui/layout](./src/ui/layout/)
+
+Layout components. Crucial to SDS layouts, but do not have analogous component in Figma.
+
+### [src/ui/primitives](./src/ui/primitives/)
+
+The main component library. SDS primitives can't be reduced further into sub components.
+
+### [src/ui/providers](./src/ui/providers/)
+
+Custom React provider definitions
+
+### [src/ui/utils](./src/ui/utils/)
+
+Custom utilities and utility components
+
+### Code Connect and Storybook
+
+All Code Connect docs and Storybook stories follow the same categorization are defined in [src/figma](./src/figma) and [src/stories](./src/stories).
+
+## Scripts
+
+Some example integrations are available in `scripts` directory. They may require additional API scope that your org may or may not have access to. Where possible, there are some plugin examples to help fill gaps.
+
+### [scripts/component-metadata](./scripts/component-metadata)
+
+- Scripts to run in the JS Console in Figma
+- Bulk manage descriptions for all components in the file. Instead of making a complicated plugin, you can do this more simply by running scripts directly from the JavaScript console.
+- Copy the contents of [scripts/component-metadata/exportComponentJSON.js](./scripts/component-metadata/exportComponentJSON.js) and run in the console with the file open.
+  - "Copy as object" the result and paste into [scripts/component-metadata/components.json](./scripts/component-metadata/components.json).
+- There you can modify descriptions more easily.
+- Once you have modified the descriptions, copy the JSON and paste at the top of [scripts/component-metadata/importComponentJSON.js](./scripts/component-metadata/importComponentJSON.js) as the value of the `json` variable.
+- Copy all the contents of the import file and run in the console to batch update descriptions for the entire file.
+- **This will only update the descriptions.** To update Dev Resources, you can use [scripts/dev-resources](#scriptsdev-resources).
+
+### [scripts/dev-resources](./scripts/dev-resources)
+
+- `npm run script:dev-resources` (REST API only)
+- Sets dev resources for all components described in [scripts/dev-resources/devResources.mjs](./scripts/dev-resources/devResources.mjs) to match.
+- Useful when swapping urls in bulk. Requires `Dev Resources: Write` scope on your REST API token.
+
+### [scripts/icons](./scripts/icons)
+
+- `npm run script:icons:rest`
+- Gets all icons from the file, and generates components in the [src/ui/icons](./src/ui/icons) directory.
+- Also generates [src/figma/icons/Icons.figma.tsx](./src/figma/icons/Icons.figma.tsx) for Code Connect.
+
+### [scripts/tokens](./scripts/tokens)
+
+- `npm run script:tokens:rest`
+- Gets all variables and styles from Figma, and converts them to [src/theme.css](./src/theme.css).
+- Creates [scripts/tokens/tokensCodeSyntaxes.js](./scripts/tokens/tokensCodeSyntaxes.js) which is a script you can run in the JS console in Figma to update all the variable's [codeSyntaxes](https://www.figma.com/plugin-docs/api/Variable/#codesyntax) with CSS that matches this repo.
+- Includes some example plugins for how to get the same data without the Variables REST API.
+  - [Install plugins](https://www.figma.com/plugin-docs/plugin-quickstart-guide/) in Development
+  - Run plugins, and copy plugin outputs into [scripts/tokens/styles.json](./scripts/tokens/styles.json) and [scripts/tokens/tokens.json](./scripts/tokens/tokens.json)
+  - Run `npm run script:tokens` (without `:rest`) and it will reference the JSON files directly without making a REST API request to update them
